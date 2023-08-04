@@ -109,13 +109,15 @@ return {
             require("nvim-tree").setup {}
         end,
     },
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function() require("gitsigns").setup() end
-    },
+    { "lewis6991/gitsigns.nvim" },
     {
         "rcarriga/nvim-notify",
         config = function() require("notify").setup() end
     },
     { "Tastyep/structlog.nvim", },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+    }
 }
