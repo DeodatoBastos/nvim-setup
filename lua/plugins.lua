@@ -20,7 +20,8 @@ return {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         dependencies = {
-            'JoosepAlviste/nvim-ts-context-commentstring',
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            "mrjones2014/nvim-ts-rainbow",
         },
     },
     {
@@ -85,18 +86,6 @@ return {
         end
     },
     { 'kazhala/close-buffers.nvim' },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        version = "*",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require('neo-tree').setup {}
-        end,
-    },
     { "onsails/lspkind.nvim" },
     {
         "nvim-tree/nvim-tree.lua",
@@ -119,5 +108,54 @@ return {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
-    }
+    },
+    { "ChristianChiarulli/swenv.nvim" },
+    { "stevearc/dressing.nvim" },
+    { "mfussenegger/nvim-dap-python" },
+    { "nvim-neotest/neotest" },
+    { "nvim-neotest/neotest-python" },
+    { "p00f/clangd_extensions.nvim" },
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    },
+    { "pixelneo/vim-python-docstring" },
+    {
+        "ethanholz/nvim-lastplace",
+        event = "BufRead",
+        config = function()
+            require("nvim-lastplace").setup({
+                lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+                lastplace_ignore_filetype = {
+                    "gitcommit", "gitrebase", "svn", "hgcommit",
+                },
+                lastplace_open_folds = true,
+            })
+        end,
+    },
+    {
+        "sindrets/diffview.nvim",
+        event = "BufRead",
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        config = function()
+            require("nvim-ts-autotag").setup()
+        end,
+    },
+    {
+        "folke/lsp-colors.nvim",
+        event = "BufRead",
+    },
+    {
+        "folke/persistence.nvim",
+        event = "BufReadPre", -- this will only start session saving when an actual file was opened
+        module = "persistence",
+        config = function()
+            require("persistence").setup {
+                dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+                options = { "buffers", "curdir", "tabpages", "winsize" },
+            }
+        end,
+    },
 }
