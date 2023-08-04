@@ -22,7 +22,7 @@ require("telescope").setup {
             "--hidden",
             "--glob=!.git/",
         },
-        file_ignore_patterns = {},
+        file_ignore_patterns = { ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
         path_display = { "smart" },
         winblend = 0,
         border = {},

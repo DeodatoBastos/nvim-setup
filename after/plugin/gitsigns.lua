@@ -37,11 +37,11 @@ require("gitsigns").setup {
         interval = 1000,
         follow_files = true,
     },
-    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame = true,
     current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol",
-        delay = 1000,
+        delay = 200,
         ignore_whitespace = false,
     },
     current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
