@@ -1,6 +1,6 @@
 require("toggleterm").setup {
     size = 10,
-    open_mapping = [[<M-2>]],
+    open_mapping = [[<M-1>]],
     shade_filetypes = {},
     shade_terminals = true,
     insert_mappings = true,
