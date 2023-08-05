@@ -28,6 +28,3 @@ vim.opt.mousemoveevent = true
 vim.opt.updatetime = 50
 
 vim.opt.hidden = true
-
--- vim.opt.colorcolumn = "90"
-

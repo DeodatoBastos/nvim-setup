@@ -9,7 +9,6 @@ require("toggleterm").setup {
     shading_factor = 1,
     direction = "float",
     close_on_exit = true,
-    -- on_open = function (_) vim.cmd.startinsert() end,
     start_in_insert = true,
     float_opts = {
         border = "curved",

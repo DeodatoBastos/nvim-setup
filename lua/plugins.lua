@@ -46,12 +46,6 @@ return {
         'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     },
     {
-        "mbbill/undotree",
-        config = function()
-            require("undotree").setup()
-        end
-    },
-    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         dependencies = {
@@ -149,7 +143,7 @@ return {
     },
     {
         "folke/persistence.nvim",
-        event = "BufReadPre", -- this will only start session saving when an actual file was opened
+        event = "BufReadPre",
         module = "persistence",
         config = function()
             require("persistence").setup {
