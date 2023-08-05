@@ -39,12 +39,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
         vim.cmd.startinsert()
     end,
 })
-
--- vim.keymap.set("n", "<M-1>", function() init_or_toggle(1, "horizonta") end)
--- vim.keymap.set("n", "<M-2>", function() exec_toggle({ cmd = ".", size = 20, direction = "vertical" }) end)
--- vim.keymap.set("n", "<M-3>", function() init_or_toggle(2, "vertical") end)
--- vim.keymap.set("n", "<M-2>", exec_toggle{"exe 1", ".", "vertical"})
--- vim.keymap.set("n", "<M-3>", exec_toggle{"exe 1", ".", "float" })
--- vim.keymap.set("t", "<M-1>", vim.cmd.ToggleTerm)
--- vim.keymap.set("t", "<M-2>", vim.cmd.ToggleTerm)
--- vim.keymap.set("t", "<M-3>", vim.cmd.ToggleTerm)
