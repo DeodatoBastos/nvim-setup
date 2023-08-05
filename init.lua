@@ -17,6 +17,9 @@ require("lazy").setup("plugins", {
     defaults = { lazy = true },
     install = { missing = true, colorscheme = { "tokyonight" } },
     checker = { enabled = true },
+    ui = { wrap = "true" },
+    change_detection = { enabled = true },
+    debug = false,
     custom_keys = {
         -- open a terminal for the plugin dir
         ["<leader>t"] = function(plugin)

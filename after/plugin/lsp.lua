@@ -1,6 +1,6 @@
 local lsp = require("lsp-zero").preset("recommended")
-lsp.automatic_servers_installation = true
 
+lsp.automatic_servers_installation = true
 lsp.ensure_installed({
     "lua_ls",
     -- "cmake",
@@ -14,7 +14,7 @@ lsp.ensure_installed({
     -- "jsonls",
     -- "tsserver",
 })
-lsp.nvim_workspace()
+-- lsp.nvim_workspace()
 lsp.set_preferences({
     suggest_lsp_servers = true,
     sign_icons = {
@@ -42,8 +42,8 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 require('luasnip.loaders.from_vscode').lazy_load()
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
 
@@ -81,13 +81,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 cmp.setup({
-    enabled = function()
-        local buftype = vim.api.nvim_buf_get_option(0, "buftype")
-        if buftype == "prompt" then
-            return false
-        end
-        return vim.g.cmp_toggle
-    end,
     snippet = {
         expand = function(args)
             require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
@@ -140,18 +133,21 @@ cmp.setup({
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
+    experimental = {
+        ghost_text = true,
+    },
 })
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+    callback = function()
+        -- vim.cmd "hi link illuminatedWord LspReferenceText"
+        vim.fn.execute("hi link illuminatedWord LspReferenceText")
+    end,
+})
+
+
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-        "documentation",
-        "detail",
-        "additionalTextEdits",
-    },
-}
-
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-cmp_nvim_lsp.default_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)

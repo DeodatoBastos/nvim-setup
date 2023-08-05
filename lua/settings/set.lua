@@ -26,5 +26,5 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.mousemoveevent = true
 vim.opt.updatetime = 50
-
+vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.hidden = true
