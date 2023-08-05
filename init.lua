@@ -15,8 +15,16 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
     defaults = { lazy = true },
-    install = { colorscheme = { "tokyonight" } },
+    install = { missing = true, colorscheme = { "tokyonight" } },
     checker = { enabled = true },
+    custom_keys = {
+        -- open a terminal for the plugin dir
+        ["<leader>t"] = function(plugin)
+            require("lazy.util").float_term(nil, {
+                cwd = plugin.dir,
+            })
+        end,
+    },
     performance = {
         rtp = {
             disabled_plugins = {

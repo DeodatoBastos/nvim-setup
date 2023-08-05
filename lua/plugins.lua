@@ -52,13 +52,23 @@ return {
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
-            { 'hrsh7th/nvim-cmp' },
+            {
+                'hrsh7th/nvim-cmp',
+                event = { "InsertEnter", "CmdlineEnter" }
+            },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'L3MON4D3/LuaSnip' },
-        }
+            {
+                "hrsh7th/cmp-buffer",
+                event = "InsertEnter"
+            },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lua' },
+            { 'nvim-lua/popup.nvim' },
+            { "rafamadriz/friendly-snippets" },
+        },
     },
-    { 'nvim-lua/popup.nvim' },
-    { "rafamadriz/friendly-snippets" },
     {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', lazy = true }
