@@ -159,4 +159,9 @@ return {
         end,
     },
     { "RRethy/vim-illuminate" },
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        config = true
+    },
 }
