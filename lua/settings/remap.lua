@@ -3,7 +3,7 @@ local term_opts = { silent = true }
 
 vim.g.mapleader = " "
 vim.keymap.set("n", "<C-s>", vim.cmd.w)
-vim.keymap.set("n", "<leader>s", vim.cmd.so)
+vim.keymap.set("n", "<leader>so", vim.cmd.so)
 vim.keymap.set("n", "\\", vim.cmd.vsplit)
 vim.keymap.set("n", "|", vim.cmd.split)
 
