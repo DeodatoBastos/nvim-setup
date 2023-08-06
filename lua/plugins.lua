@@ -46,28 +46,36 @@ return {
         'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     },
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
+        "hrsh7th/nvim-cmp",
+        event = { "InsertEnter", "CmdlineEnter" },
         dependencies = {
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-nvim-lua" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "saadparwaiz1/cmp_luasnip" },
             {
-                'hrsh7th/nvim-cmp',
-                event = { "InsertEnter", "CmdlineEnter" }
+                "L3MON4D3/LuaSnip",
+                event = "InsertEnter",
+                dependecies = {
+                    "rafamadriz/friendly-snippets",
+                },
             },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'L3MON4D3/LuaSnip' },
-            {
-                "hrsh7th/cmp-buffer",
-                event = "InsertEnter"
-            },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lua' },
-            { 'nvim-lua/popup.nvim' },
-            { "rafamadriz/friendly-snippets" },
         },
+    },
+    {
+        "williamboman/mason.nvim",
+        cmd = "Mason",
+        event = "BufReadPre",
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim",
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",
+        lazy = false,
+        event = { "BufReadPre" },
+        dependencies = { { "hrsh7th/cmp-nvim-lsp" }, },
     },
     {
         'nvim-lualine/lualine.nvim',
