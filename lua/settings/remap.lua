@@ -55,8 +55,10 @@ keymap("c", "<C-j>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, nore
 keymap("c", "<C-k>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
 
 -- Lazy --
-vim.keymap.set("n", "<leader>Li", function() vim.cmd.Lazy { "install" } end, { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>Lu", function() vim.cmd.Lazy { "update" } end, { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>Lx", function() vim.cmd.Lazy { "clear" } end, { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>Lc", function() vim.cmd.Lazy { "check" } end, { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>Ls", function() vim.cmd.Lazy { "sync" } end, { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>Li", function() vim.cmd.Lazy { "install" } end, opts)
+vim.keymap.set("n", "<leader>Lu", function() vim.cmd.Lazy { "update" } end, opts)
+vim.keymap.set("n", "<leader>Lx", function() vim.cmd.Lazy { "clear" } end, opts)
+vim.keymap.set("n", "<leader>Lc", function() vim.cmd.Lazy { "check" } end, opts)
+vim.keymap.set("n", "<leader>Ls", function() vim.cmd.Lazy { "sync" } end, opts)
+
+vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
