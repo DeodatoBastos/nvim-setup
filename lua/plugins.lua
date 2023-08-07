@@ -8,7 +8,15 @@ return {
         end,
     },
     { "lunarvim/colorschemes" },
-    { "folke/which-key.nvim" },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 200
+        end,
+        opts = {},
+    },
     { "folke/neoconf.nvim",   cmd = "Neoconf" },
     { "folke/neodev.nvim",    opts = {} },
     {
@@ -119,7 +127,7 @@ return {
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {},
+        opts = { ignore_missing = true },
     },
     { "ChristianChiarulli/swenv.nvim" },
     { "stevearc/dressing.nvim" },

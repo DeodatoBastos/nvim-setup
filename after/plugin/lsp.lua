@@ -12,14 +12,16 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 local function lsp_keymaps(bufnr)
-    local opts = { buffer = bufnr, noremap = true, silent = true }
+    local function opts(desc)
+        return { desc = desc, buffer = bufnr, noremap = true, silent = true}
+    end
     local keymap = vim.keymap.set
-    keymap("n", "gD", vim.lsp.buf.declaration, opts)
-    keymap("n", "gd", vim.lsp.buf.definition, opts)
-    keymap("n", "K", vim.lsp.buf.hover, opts)
-    keymap("n", "gi", vim.lsp.buf.implementation, opts)
-    keymap("n", "gr", vim.lsp.buf.references, opts)
-    keymap("n", "gl", vim.diagnostic.open_float, opts)
+    keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to Declaration"))
+    keymap("n", "gd", vim.lsp.buf.definition, opts("Go to Denifinition"))
+    keymap("n", "K", vim.lsp.buf.hover, opts("Houver"))
+    keymap("n", "gi", vim.lsp.buf.implementation, opts("Go to Implementation"))
+    keymap("n", "gr", vim.lsp.buf.references, opts("Find references"))
+    keymap("n", "gl", vim.diagnostic.open_float, opts("Open Float"))
     keymap("n", "<leader>li", vim.cmd.LspInfo, opts)
     keymap("n", "<leader>lI", vim.cmd.Mason, opts)
     keymap("n", "<leader>la", vim.lsp.buf.code_action, opts)
