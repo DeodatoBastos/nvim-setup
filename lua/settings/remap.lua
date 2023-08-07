@@ -1,7 +1,10 @@
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
+vim.keymap.set("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.keymap.set("n", "<C-s>", vim.cmd.w)
 vim.keymap.set("n", "<leader>s", vim.cmd.so)
 vim.keymap.set("n", "\\", vim.cmd.vsplit)
@@ -53,12 +56,5 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Menu navigation
 keymap("c", "<C-j>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
 keymap("c", "<C-k>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
-
--- Lazy --
-vim.keymap.set("n", "<leader>Li", function() vim.cmd.Lazy { "install" } end, opts)
-vim.keymap.set("n", "<leader>Lu", function() vim.cmd.Lazy { "update" } end, opts)
-vim.keymap.set("n", "<leader>Lx", function() vim.cmd.Lazy { "clear" } end, opts)
-vim.keymap.set("n", "<leader>Lc", function() vim.cmd.Lazy { "check" } end, opts)
-vim.keymap.set("n", "<leader>Ls", function() vim.cmd.Lazy { "sync" } end, opts)
 
 vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
