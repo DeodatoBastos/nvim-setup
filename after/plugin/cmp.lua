@@ -7,7 +7,7 @@ local check_backspace = function()
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
-local kind_icons = require("settings.icons").kind
+local kind_icons = require("utils.icons").kind
 
 cmp.setup {
     snippet = {

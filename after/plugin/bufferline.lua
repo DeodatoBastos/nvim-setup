@@ -1,5 +1,5 @@
 local bufferline = require("bufferline")
-local icons = require("settings.icons")
+local icons = require("utils.icons")
 
 local function is_ft(b, ft)
     return vim.bo[b].filetype == ft
@@ -19,8 +19,8 @@ local function diagnostics_indicator(_, _, diagnostics, _)
         end
     end
 
-    result = table.concat(result, " ")
-    return #result > 0 and result or ""
+    local result_str = table.concat(result, " ")
+    return #result_str > 0 and result_str or ""
 end
 
 local function custom_filter(buf, buf_nums)

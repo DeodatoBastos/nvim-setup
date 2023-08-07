@@ -1,4 +1,4 @@
-local custom_icons = require("settings.icons")
+local custom_icons = require("utils.icons")
 
 local function start_telescope(telescope_mode)
   local node = require("nvim-tree.lib").get_node_at_cursor()

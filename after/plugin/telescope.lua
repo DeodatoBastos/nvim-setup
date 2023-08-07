@@ -1,4 +1,4 @@
-local icons = require("settings.icons")
+local icons = require("utils.icons")
 local actions = require("telescope.actions")
 
 require("telescope").setup {

@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
     require("illuminate").on_attach(client)
 end
 
-for _, server in pairs(require("settings.servers")) do
+for _, server in pairs(require("utils.servers")) do
     Opts = {
         on_attach = on_attach,
         capabilities = capabilities,

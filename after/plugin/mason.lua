@@ -11,6 +11,6 @@ require("mason").setup({
     max_concurrent_installers = 4,
 })
 require("mason-lspconfig").setup {
-    ensure_installed = require("settings.servers"),
+    ensure_installed = require("utils.servers"),
     automatic_installation = true,
 }

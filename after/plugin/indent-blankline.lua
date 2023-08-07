@@ -1,7 +1,7 @@
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 
-local icons = require("settings.icons")
+local icons = require("utils.icons")
 
 require("indent_blankline").setup {
     space_char_blankline = " ",

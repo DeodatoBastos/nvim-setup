@@ -1,5 +1,5 @@
 local navic = require("nvim-navic")
-local all_icons = require("settings.icons")
+local all_icons = require("utils.icons")
 local icons = all_icons.kind
 local separator = all_icons.ui.ChevronRight
 

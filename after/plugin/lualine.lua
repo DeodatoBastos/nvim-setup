@@ -1,6 +1,6 @@
 local navic = require("nvim-navic")
 local lualine = require("lualine")
-local icons = require("settings.icons")
+local icons = require("utils.icons")
 local window_width_limit = 100
 local branch_icon = icons.git.Branch
 
@@ -118,7 +118,7 @@ local progress = {
 local get_filename = function()
     local name = vim.fn.expand "%:t"
     local extension = vim.fn.expand "%:e"
-    local f = require("settings.functions")
+    local f = require("utils.functions")
 
     if not f.isempty(name) then
         local file_icon, hl_group
@@ -167,8 +167,8 @@ local breadcrumbs = {
     function()
         local name = get_filename()
         local location = navic.get_location()
-        local separator = require("settings.icons").ui.ChevronRight
-        if not require("settings.functions").isempty(location) then
+        local separator = require("utils.icons").ui.ChevronRight
+        if not require("utils.functions").isempty(location) then
             name = name .. " " .. separator .. " " .. location
         end
 
