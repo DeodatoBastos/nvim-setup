@@ -241,3 +241,7 @@ require("nvim-tree").setup({
 
 
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
+local api = require("nvim-tree.api")
+api.events.subscribe(api.events.Event.FileCreated, function(file)
+  vim.cmd("edit " .. file.fname)
+end)
