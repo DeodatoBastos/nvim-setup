@@ -48,14 +48,16 @@ function _LAZYGIT_TOGGLE()
     lazygit:toggle()
 end
 
-local opts = {silent = true, noremap = true}
+local function opts(desc)
+    return { desc = desc, noremap = true, silent = true }
+end
 
-vim.keymap.set("n", "<M-1>", ":ToggleTerm direction=float<CR>", opts)
-vim.keymap.set("n", "<M-2>", ":ToggleTerm size=15 direction=horizontal<CR>", opts)
-vim.keymap.set("n", "<M-3>", ":ToggleTerm size=60 direction=vertical<CR>", opts)
+vim.keymap.set("n", "<M-1>", ":ToggleTerm direction=float<CR>", opts("Float Terminal"))
+vim.keymap.set("n", "<M-2>", ":ToggleTerm size=15 direction=horizontal<CR>", opts("Horizontal Terminal"))
+vim.keymap.set("n", "<M-3>", ":ToggleTerm size=60 direction=vertical<CR>", opts("Vertical Terminal"))
 
-vim.keymap.set("t", "<M-1>", function() vim.cmd.ToggleTerm() end, opts)
-vim.keymap.set("t", "<M-2>", function() vim.cmd.ToggleTerm() end, opts)
-vim.keymap.set("t", "<M-3>", function() vim.cmd.ToggleTerm() end, opts)
+vim.keymap.set("t", "<M-1>", function() vim.cmd.ToggleTerm() end, opts("Toggle Terminal"))
+vim.keymap.set("t", "<M-2>", function() vim.cmd.ToggleTerm() end, opts("Toogle Terminal"))
+vim.keymap.set("t", "<M-3>", function() vim.cmd.ToggleTerm() end, opts("Toogle Terminal"))
 
 vim.keymap.set("n", "<leader>gg", "<CMD>lua _LAZYGIT_TOGGLE()<CR>")
