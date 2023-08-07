@@ -115,6 +115,70 @@ local progress = {
     color = {},
 }
 
+local get_filename = function()
+    local name = vim.fn.expand "%:t"
+    local extension = vim.fn.expand "%:e"
+    local f = require("settings.functions")
+
+    if not f.isempty(name) then
+        local file_icon, hl_group
+        local devicons_ok, devicons = pcall(require, "nvim-web-devicons")
+        if devicons_ok then
+            file_icon, hl_group = devicons.get_icon(name, extension, { default = true })
+
+            if f.isempty(file_icon) then
+                file_icon = icons.kind.File
+            end
+        else
+            file_icon = ""
+            hl_group = "Normal"
+        end
+
+        -- local buf_ft = vim.bo.filetype
+
+        -- if buf_ft == "dapui_breakpoints" then
+        --     file_icon = icons.ui.Bug
+        -- end
+
+        -- if buf_ft == "dapui_stacks" then
+        --     file_icon = icons.ui.Stacks
+        -- end
+
+        -- if buf_ft == "dapui_scopes" then
+        --     file_icon = icons.ui.Scopes
+        -- end
+
+        -- if buf_ft == "dapui_watches" then
+        --     file_icon = icons.ui.Watches
+        -- end
+
+        -- if buf_ft == "dapui_console" then
+        --   file_icon = lvim.icons.ui.DebugConsole
+        -- end
+
+        local navic_text = vim.api.nvim_get_hl_by_name("Normal", true)
+        vim.api.nvim_set_hl(0, "Winbar", { fg = navic_text.foreground })
+
+        return "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#Winbar#" .. name .. "%*"
+    end
+end
+
+local breadcrumbs = {
+    function()
+        local name = get_filename()
+        local location = navic.get_location()
+        local separator = require("settings.icons").ui.ChevronRight
+        if not require("settings.functions").isempty(location) then
+            name = name .. " " .. separator .. " " .. location
+        end
+
+        return name
+    end,
+    cond = function()
+        return navic.is_available()
+    end
+}
+
 lualine.setup {
     options = {
         fmt = string.lower,
@@ -139,15 +203,6 @@ lualine.setup {
         lualine_z = { progress },
     },
     winbar = {
-        lualine_c = {
-            {
-                function()
-                    return navic.get_location()
-                end,
-                cond = function()
-                    return navic.is_available()
-                end
-            },
-        }
+        lualine_c= { breadcrumbs }
     }
 }

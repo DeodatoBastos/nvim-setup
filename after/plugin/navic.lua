@@ -41,6 +41,7 @@ navic.setup {
     depth_limit = 0,
     depth_limit_indicator = "..",
     click = false,
+    lazy_update_context = true,
     icons = {
         Array = icons.Array .. " ",
         Boolean = icons.Boolean .. " ",
