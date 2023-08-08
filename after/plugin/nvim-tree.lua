@@ -1,13 +1,13 @@
 local custom_icons = require("utils.icons")
 
 local function start_telescope(telescope_mode)
-  local node = require("nvim-tree.lib").get_node_at_cursor()
-  local abspath = node.link_to or node.absolute_path
-  local is_folder = node.open ~= nil
-  local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ":h")
-  require("telescope.builtin")[telescope_mode] {
-    cwd = basedir,
-  }
+    local node = require("nvim-tree.lib").get_node_at_cursor()
+    local abspath = node.link_to or node.absolute_path
+    local is_folder = node.open ~= nil
+    local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ":h")
+    require("telescope.builtin")[telescope_mode] {
+        cwd = basedir,
+    }
 end
 
 local function custom_on_attach(bufnr)
@@ -62,6 +62,8 @@ require("nvim-tree").setup({
             },
         },
     },
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     renderer = {
         add_trailing = true,
         group_empty = true,
@@ -243,5 +245,5 @@ require("nvim-tree").setup({
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 local api = require("nvim-tree.api")
 api.events.subscribe(api.events.Event.FileCreated, function(file)
-  vim.cmd("edit " .. file.fname)
+    vim.cmd("edit " .. file.fname)
 end)

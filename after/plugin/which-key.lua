@@ -11,7 +11,7 @@ local mappings = {
         w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
     },
     p = {
-        name = "Project",
+        name = "Find in Project",
         f = { "<cmd>Telescope find_files<cr>", "Find Files" },
         g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
         h = { "<cmd>Telescope help_tags<cr>", "Help" },

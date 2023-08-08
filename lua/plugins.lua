@@ -17,12 +17,22 @@ return {
         end,
         opts = {},
     },
-    { "folke/neoconf.nvim",   cmd = "Neoconf" },
-    { "folke/neodev.nvim",    opts = {} },
+    {
+        "folke/neoconf.nvim",
+        cmd = "Neoconf"
+    },
+    {
+        "folke/neodev.nvim",
+        lazy = true,
+        opts = {}
+    },
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.2',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            "ahmedkhalf/project.nvim",
+        }
     },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -192,4 +202,5 @@ return {
             require("lsp-file-operations").setup({ debug = false })
         end,
     },
+    { "ahmedkhalf/project.nvim", },
 }
