@@ -5,16 +5,23 @@ return {
                 enable = true,
             },
             diagnostics = {
-                globals = { "vim" },
+                globals = { "vim", "lvim", "reload" },
             },
             workspace = {
                 library = {
                     [vim.fn.expand "$VIMRUNTIME/lua"] = true,
                     [vim.fn.stdpath "config" .. "/lua"] = true,
+                    require("neodev.config").types(),
                 },
             },
             telemetry = {
                 enable = false,
+            },
+            runtime = {
+                version = "LuaJIT",
+                special = {
+                    reload = "require",
+                },
             },
         },
     },
