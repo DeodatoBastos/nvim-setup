@@ -99,7 +99,7 @@ local mappings = {
         r = {"<cmd>BufferLineCloseRight<cr>", "Close next right"},
     },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    f = { "<cmd>Telescope git_files", "Find git files" },
+    f = { "<cmd>Telescope git_files<cr>", "Find git files" },
     c = { "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", "Close Buffer" },
     s = { "<cmd>source %<cr>", "Source file" },
     h = { "<cmd>nohlsearch<cr>", "No Highlight" },
