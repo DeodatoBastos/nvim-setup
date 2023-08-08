@@ -13,7 +13,7 @@ capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 local function lsp_keymaps(bufnr)
     local function opts(desc)
-        return { desc = desc, buffer = bufnr, noremap = true, silent = true}
+        return { desc = desc, buffer = bufnr, noremap = true, silent = true }
     end
     local keymap = vim.keymap.set
     keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to Declaration"))
@@ -55,11 +55,13 @@ for _, server in pairs(require("utils.servers")) do
     lspconfig[server].setup(Opts)
 end
 
+local icons = require("utils.icons").diagnostics
+
 local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignError", text = icons.BoldError },
+    { name = "DiagnosticSignWarn",  text = icons.BoldWarning },
+    { name = "DiagnosticSignHint",  text = icons.BoldInformation },
+    { name = "DiagnosticSignInfo",  text = icons.BoldQuestion },
 }
 
 for _, sign in ipairs(signs) do
