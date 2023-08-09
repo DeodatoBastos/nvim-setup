@@ -3,7 +3,7 @@ require 'nvim-treesitter.configs'.setup {
         "json", "typescript", "python", "tsx",
         "r", "latex", "cmake", "make", "bibtex",
         "git_rebase", "sql", "ninja", "markdown",
-        "verilog", "comment",
+        "verilog", "comment", "markdown_inline"
     },
 
     sync_install = false,
