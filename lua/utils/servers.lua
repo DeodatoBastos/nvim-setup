@@ -2,7 +2,7 @@ return {
     "lua_ls",
     "pyright",
     -- "flake8",
-    -- "clangd",
+    "clangd",
     -- "codelldb",
     -- "clang_format",
     -- "cmake",

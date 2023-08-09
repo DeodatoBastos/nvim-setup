@@ -6,6 +6,10 @@ return {
                 autoImportCompletions = true,
             },
             disableOrganizeImports = false,
+            inlayHints = {
+                variableTypes = true,
+                functionReturnTypes = true,
+            },
         },
     },
 }
