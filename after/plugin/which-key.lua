@@ -80,7 +80,8 @@ local mappings = {
     },
     L = {
         name = "Lazy",
-        s = { "<cmd>Lazy update<cr>", "Update" },
+        u = { "<cmd>Lazy update<cr>", "Update" },
+        s = { "<cmd>Lazy sync<cr>", "Sync" },
         l = { "<cmd>Lazy log<cr>", "Log" },
         p = { "<cmd>Lazy profile<cr>", "Profile" },
         d = { "<cmd>Lazy debug<cr>", "Debug" },

@@ -130,7 +130,6 @@ return {
     },
     { "lewis6991/gitsigns.nvim" },
     { "rcarriga/nvim-notify", },
-    { "Tastyep/structlog.nvim", },
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
