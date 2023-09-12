@@ -19,6 +19,12 @@ require("indent_blankline").setup {
             "NvimTree",
             "Trouble",
             "text",
+            "lspinfo",
+            "TelescopePrompt",
+            "TelescopeResults",
+            "mason",
+            "toggleterm",
+            "terminal"
         },
         char = icons.ui.LineLeft,
         context_char = icons.ui.LineLeft,

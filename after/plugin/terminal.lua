@@ -7,6 +7,8 @@ require("toggleterm").setup {
     insert_mappings = true,
     terminal_mappings = true,
     persist_size = true,
+    persist_mode = false,
+    auto_scroll = false,
     shading_factor = 1,
     direction = "float",
     close_on_exit = true,
