@@ -29,7 +29,6 @@ navic.setup {
         "notify",
         "noice",
         "neotest-summary",
-        "",
     },
     lsp = {
         auto_attach = true,
