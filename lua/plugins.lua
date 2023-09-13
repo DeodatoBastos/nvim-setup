@@ -201,5 +201,5 @@ return {
             require("lsp-file-operations").setup({ debug = false })
         end,
     },
-    { "ahmedkhalf/project.nvim", },
+    { "ahmedkhalf/project.nvim" },
 }

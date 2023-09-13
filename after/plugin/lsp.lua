@@ -40,6 +40,8 @@ local on_attach = function(client, bufnr)
 end
 
 for _, server in pairs(require("utils.servers")) do
+    server = vim.split(server, "@")[1]
+
     if server == "clangd" then
         local provider = require("settings.lsp.clangd_setup")
         Opts = {
@@ -53,8 +55,6 @@ for _, server in pairs(require("utils.servers")) do
             capabilities = capabilities,
         }
     end
-
-    server = vim.split(server, "@")[1]
 
     local require_ok, conf_opts = pcall(require, "settings.lsp." .. server)
     if require_ok then

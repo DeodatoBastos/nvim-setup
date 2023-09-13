@@ -1,11 +1,9 @@
-local M = {}
-
-
 local function lsp_keymaps(bufnr)
     local function opts(desc)
         return { desc = desc, buffer = bufnr, noremap = true, silent = true }
     end
     local keymap = vim.keymap.set
+
     keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to Declaration"))
     keymap("n", "gd", vim.lsp.buf.definition, opts("Go to Denifinition"))
     keymap("n", "K", vim.lsp.buf.hover, opts("Houver"))
@@ -29,14 +27,14 @@ local function lsp_keymaps(bufnr)
     keymap("n", "<leader>lm", "<cmd>ClangdMemoryUsage<cr>", opts("ClangdMemoryUsage"))
 end
 
-function M.on_attach(client, bufnr)
+local function on_attach(client, bufnr)
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
     require("clangd_extensions.inlay_hints").setup_autocmd()
     require("clangd_extensions.inlay_hints").set_inlay_hints()
 end
 
-function M.on_init(_, _)
+local function on_init(_, _)
     require("clangd_extensions.config").setup {}
     require("clangd_extensions.ast").init()
 
@@ -49,4 +47,34 @@ function M.on_init(_, _)
     ]]
 end
 
-return M
+local settings = {
+    cpp = {
+        cmd = {
+                "clang",
+                "--background-index",
+                "--fallback-style=Google",
+                "--all-scopes-completion",
+                "--clang-tidy",
+                "--log=error",
+                "--suggest-missing-includes",
+                "--cross-file-rename",
+                "--completion-style=detailed",
+                "--pch-storage=memory", -- could also be disk
+                "--folding-ranges",
+                "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+                "--offset-encoding=utf-16", --temporary fix for null-ls
+                -- "--limit-references=1000",
+                -- "--limit-resutls=1000",
+                -- "--malloc-trim",
+                -- "--clang-tidy-checks=-*,llvm-*,clang-analyzer-*,modernize-*,-modernize-use-trailing-return-type",
+                -- "--header-insertion=never",
+                -- "--query-driver=<list-of-white-listed-complers>"
+        }
+    }
+}
+
+return {
+    settings = settings,
+    on_init = on_init,
+    on_attach = on_attach,
+}

@@ -185,7 +185,7 @@ lualine.setup {
         lualine_c = { breadcrumbs }
     },
     -- tabline = {
-        -- lualine_a = { "tabs" },
+    -- lualine_a = { "tabs" },
     --     lualine_z = { { "datetime", style = "%d/%m" }, { "datetime", style = "%H:%M" } },
     -- },
 }
