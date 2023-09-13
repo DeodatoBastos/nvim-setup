@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
@@ -59,18 +60,36 @@ cmp.setup {
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
-        format = function(entry, vim_item)
-            vim_item.kind = kind_icons[vim_item.kind]
-            vim_item.menu = ({
-                nvim_lsp = "",
-                nvim_lua = "",
-                luasnip = "",
-                buffer = "",
-                path = "",
-                emoji = "",
-            })[entry.source.name]
-            return vim_item
-        end,
+        -- format = function(entry, vim_item)
+        --     vim_item.kind = kind_icons[vim_item.kind]
+        --     vim_item.menu = ({
+        --         nvim_lsp = "",
+        --         nvim_lua = "",
+        --         luasnip = "",
+        --         buffer = "",
+        --         path = "",
+        --         emoji = "",
+        --     })[entry.source.name]
+        --     return vim_item
+        -- end,
+        format = lspkind.cmp_format({
+            mode = "symbol_text",
+            menu = {
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                cmp_git = "[Git]",
+                snippy = "[Snippy]",
+                path = "[Path]",
+                cmdline = "[CMD]",
+                nvim_lsp_document_symbol = "[Symbol]",
+            },
+            -- before = function(entry, vim_item)
+            --     if entry.source.name == "nvim_lsp" then
+            --         vim_item.dup = 0
+            --     end
+            --     return vim_item
+            -- end,
+        }),
     },
     preselect = "item",
     completion = {
