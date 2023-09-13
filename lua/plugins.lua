@@ -202,4 +202,14 @@ return {
         end,
     },
     { "ahmedkhalf/project.nvim" },
+    { "stevearc/dressing.nvim" },
+    {
+        "mrded/nvim-lsp-notify",
+        dependecies = { "rcarriga/nvim-notify" },
+        config = function()
+            require("lsp-notify").setup({
+                notify = require("notify"),
+            })
+        end
+    }
 }

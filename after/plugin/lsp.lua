@@ -25,6 +25,7 @@ local function lsp_keymaps(bufnr)
     keymap("n", "<leader>li", vim.cmd.LspInfo, opts())
     keymap("n", "<leader>lI", vim.cmd.Mason, opts())
     keymap("n", "<leader>la", vim.lsp.buf.code_action, opts())
+    keymap("n", "<leader>lt", vim.lsp.buf.type_definition, opts("Type Denifinition"))
     keymap("n", "<leader>lj", function() vim.diagnostic.goto_next({ buffer = 0 }) end, opts())
     keymap("n", "<leader>lk", function() vim.diagnostic.goto_prev({ buffer = 0 }) end, opts())
     keymap("n", "<leader>lr", vim.lsp.buf.rename, opts())
@@ -104,3 +105,15 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
 })
+
+-- table from lsp severity to vim severity.
+local severity = {
+    "error",
+    "warn",
+    "info",
+    "hint",
+}
+
+vim.lsp.handlers["window/showMessage"] = function(_, method, params, _)
+    vim.notify(method.message, severity[params.type])
+end
