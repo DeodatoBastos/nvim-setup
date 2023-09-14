@@ -234,15 +234,11 @@ return {
     },
     {
         "kristijanhusak/vim-dadbod-ui",
-        cmd = {
-            "DBUI",
-            "DBUIToggle",
-            "DBUIAddConnection",
-            "DBUIFindBuffer",
-            "DBUIRenameBuffer",
-            "DBUILastQueryInfo",
-            "DBUIHideNotifications"
-        },
+        cmd = require("settings.dbui").cmd,
+        init = function()
+            require("settings.dbui").init()
+        end,
+        dependecies = require("settings.dbui").dependencies,
     },
     { "kristijanhusak/vim-dadbod-completion" },
 }
