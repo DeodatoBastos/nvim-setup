@@ -13,6 +13,17 @@ local conditions = {
     end,
 }
 
+local function env_cleanup(venv)
+  if string.find(venv, "/") then
+    local final_venv = venv
+    for w in venv:gmatch "([^/]+)" do
+      final_venv = w
+    end
+    venv = final_venv
+  end
+  return venv
+end
+
 local lsp = {
     function()
         local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
@@ -66,13 +77,12 @@ local branch = {
 }
 local py_env = {
     function()
-        local utils = require "lvim.core.lualine.utils"
         if vim.bo.filetype == "python" then
             local venv = os.getenv "CONDA_DEFAULT_ENV" or os.getenv "VIRTUAL_ENV"
             if venv then
                 local icon = require "nvim-web-devicons"
                 local py_icon, _ = icon.get_icon ".py"
-                return string.format(" " .. py_icon .. " (%s)", utils.env_cleanup(venv))
+                return string.format(" " .. py_icon .. " (%s)", env_cleanup(venv))
             end
         end
         return ""
