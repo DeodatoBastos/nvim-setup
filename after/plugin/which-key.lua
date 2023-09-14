@@ -1,6 +1,12 @@
 local whichkey = require("which-key")
 
 local mappings = {
+    S = {
+        name = "Session",
+        c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+        l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+        Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+    },
     t = {
         name = "Trouble",
         r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -81,6 +87,7 @@ local mappings = {
     },
     L = {
         name = "Lazy",
+        i = { "<cmd>Lazy install<cr>", "Install" },
         u = { "<cmd>Lazy update<cr>", "Update" },
         s = { "<cmd>Lazy sync<cr>", "Sync" },
         l = { "<cmd>Lazy log<cr>", "Log" },
