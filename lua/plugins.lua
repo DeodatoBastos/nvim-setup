@@ -231,6 +231,11 @@ return {
     {
         "tpope/vim-dadbod",
         cmd = "DB",
+        opt = true,
+        requires = {
+            "kristijanhusak/vim-dadbod-ui",
+            "kristijanhusak/vim-dadbod-completion",
+        },
     },
     {
         "kristijanhusak/vim-dadbod-ui",
@@ -240,5 +245,8 @@ return {
         end,
         dependecies = require("settings.dbui").dependencies,
     },
-    { "kristijanhusak/vim-dadbod-completion" },
+    {
+        "kristijanhusak/vim-dadbod-completion",
+        opt = true,
+    },
 }

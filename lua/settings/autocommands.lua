@@ -47,3 +47,10 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "sql",
+    },
+    command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
+})

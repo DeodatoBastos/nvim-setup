@@ -1,6 +1,6 @@
 return {
     settings = {
-        flake8 = {
+        python = {
             extra_args = { "--max-line-length", "120" },
         },
     },
