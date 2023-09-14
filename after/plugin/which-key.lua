@@ -7,6 +7,15 @@ local mappings = {
         l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
         Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
     },
+    C = {
+        name = "Connections",
+        a = { "<cmd>DBUIAddConnection<cr>", "Add Connection" },
+        f = { "<cmd>DBUIFindBuffer<cr>", "Find Buffer" },
+        r = { "<cmd>DBUIRenameBuffer<cr>", "Rename Buffer" },
+        l = { "<cmd>DBUILastQueryInfo<cr>", "Last Query Info" },
+        h = { "<cmd>DBUIHideNotifications<cr>", "Hide Notifications" },
+    },
+    a = { "<cmd>DBUIToggle<cr>", "DB Connections" },
     t = {
         name = "Trouble",
         r = { "<cmd>Trouble lsp_references<cr>", "References" },

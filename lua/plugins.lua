@@ -228,4 +228,21 @@ return {
             })
         end,
     },
+    {
+        "tpope/vim-dadbod",
+        cmd = "DB",
+    },
+    {
+        "kristijanhusak/vim-dadbod-ui",
+        cmd = {
+            "DBUI",
+            "DBUIToggle",
+            "DBUIAddConnection",
+            "DBUIFindBuffer",
+            "DBUIRenameBuffer",
+            "DBUILastQueryInfo",
+            "DBUIHideNotifications"
+        },
+    },
+    { "kristijanhusak/vim-dadbod-completion" },
 }

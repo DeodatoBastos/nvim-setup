@@ -24,5 +24,5 @@ which_key.register({
         F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Test Class DAP" },
         S = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" },
     },
-    C = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+    P = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
 }, { prefix = "<leader>" })
