@@ -231,20 +231,11 @@ return {
         end,
     },
     {
-        "tpope/vim-dadbod",
-        cmd = "DB",
-    },
-    {
         "kristijanhusak/vim-dadbod-ui",
         cmd = dbui_conf.cmd,
         init = function()
             dbui_conf.init()
         end,
         dependencies = dbui_conf.dependencies,
-    },
-    {
-        'kristijanhusak/vim-dadbod-completion',
-        ft = { 'sql', 'mysql', 'plsql' },
-        lazy = true
     },
 }
