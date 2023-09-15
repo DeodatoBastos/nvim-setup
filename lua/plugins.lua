@@ -1,3 +1,5 @@
+local dbui_conf = require("settings.dbui")
+
 return {
     {
         "folke/tokyonight.nvim",
@@ -75,7 +77,7 @@ return {
             {
                 "L3MON4D3/LuaSnip",
                 event = "InsertEnter",
-                dependecies = {
+                dependencies = {
                     "rafamadriz/friendly-snippets",
                 },
             },
@@ -97,7 +99,7 @@ return {
     },
     {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', lazy = true }
+        dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
     },
     {
         'akinsho/bufferline.nvim',
@@ -106,7 +108,7 @@ return {
     },
     {
         "SmiteshP/nvim-navic",
-        requires = { "neovim/nvim-lspconfig" }
+        dependencies = { "neovim/nvim-lspconfig" }
     },
     { "lukas-reineke/indent-blankline.nvim" },
     {
@@ -196,7 +198,7 @@ return {
     },
     {
         "antosha417/nvim-lsp-file-operations",
-        dependecies = {
+        dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-tree.lua",
         },
@@ -208,7 +210,7 @@ return {
     { "stevearc/dressing.nvim" },
     {
         "mrded/nvim-lsp-notify",
-        dependecies = { "rcarriga/nvim-notify" },
+        dependencies = { "rcarriga/nvim-notify" },
         config = function()
             require("lsp-notify").setup({
                 notify = require("notify"),
@@ -231,22 +233,18 @@ return {
     {
         "tpope/vim-dadbod",
         cmd = "DB",
-        opt = true,
-        requires = {
-            "kristijanhusak/vim-dadbod-ui",
-            "kristijanhusak/vim-dadbod-completion",
-        },
     },
     {
         "kristijanhusak/vim-dadbod-ui",
-        cmd = require("settings.dbui").cmd,
+        cmd = dbui_conf.cmd,
         init = function()
-            require("settings.dbui").init()
+            dbui_conf.init()
         end,
-        dependecies = require("settings.dbui").dependencies,
+        dependencies = dbui_conf.dependencies,
     },
     {
-        "kristijanhusak/vim-dadbod-completion",
-        opt = true,
+        'kristijanhusak/vim-dadbod-completion',
+        ft = { 'sql', 'mysql', 'plsql' },
+        lazy = true
     },
 }

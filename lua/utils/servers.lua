@@ -16,7 +16,7 @@ return {
     "marksman",
     "sqlls",
     -- "texlab",
-    -- "jsonls",
+    "jsonls",
     -- "tsserver",
     -- "tailwindcss",
 }

@@ -1,10 +1,13 @@
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = { "bash", "c", "cpp", "lua", "javascript",
-        "json", "typescript", "python", "tsx",
+        "json", "jsonc", "typescript", "python", "tsx",
         "r", "latex", "cmake", "make", "bibtex",
         "git_rebase", "sql", "ninja", "markdown",
         "verilog", "comment", "markdown_inline"
     },
+
+    ignore_install = {"haskell"},
+    modules = {},
 
     sync_install = false,
     auto_install = true,
@@ -27,7 +30,7 @@ require 'nvim-treesitter.configs'.setup {
             vue = "<!-- %s -->",
             json = "",
         },
-        indent = { enable = true, disable = { "yaml", "python" } },
+        indent = { enable = true, disable = { "yaml" } },
         autotag = { enable = false },
         textobjects = {
             swap = {
