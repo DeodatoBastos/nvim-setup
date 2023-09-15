@@ -1,5 +1,15 @@
 local whichkey = require("which-key")
 
+whichkey.setup({
+    triggers_blacklist = {
+        -- list of mode / prefixes that should never be hooked by WhichKey
+        -- this is mostly relevant for keymaps that start with a native binding
+        i = { "j", "k" },
+        v = { "j", "k", "y", "d" },
+        n = { "y", "d", "v" }
+    },
+})
+
 local mappings = {
     S = {
         name = "Session",
