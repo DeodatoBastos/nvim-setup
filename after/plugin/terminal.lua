@@ -60,4 +60,4 @@ local function opts(desc)
 end
 
 vim.keymap.set("n", "<leader>gg", "<CMD>lua _LAZYGIT_TOGGLE()<CR>")
-vim.keymap.set("n", "<leader>B", "<CMD>lua _BTOP_TOGGLE()<CR>", opts("Btop"))
+vim.keymap.set("n", "<leader>m", "<CMD>lua _BTOP_TOGGLE()<CR>", opts("System Monitor"))

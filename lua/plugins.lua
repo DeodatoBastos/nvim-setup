@@ -34,6 +34,11 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             "ahmedkhalf/project.nvim",
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                build =
+                'cmake -S. -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+            },
         }
     },
     {
@@ -59,11 +64,6 @@ return {
             )
         end,
         opts = {} -- this is equalent to setup({}) function
-    },
-    {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build =
-        'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     },
     {
         "hrsh7th/nvim-cmp",
@@ -126,9 +126,6 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
-        config = function()
-            require("nvim-tree").setup {}
-        end,
     },
     { "lewis6991/gitsigns.nvim" },
     { "rcarriga/nvim-notify", },
@@ -139,28 +136,8 @@ return {
     },
     { "ChristianChiarulli/swenv.nvim" },
     { "stevearc/dressing.nvim" },
-    { "mfussenegger/nvim-dap-python" },
-    { "nvim-neotest/neotest" },
-    { "nvim-neotest/neotest-python" },
     { "p00f/clangd_extensions.nvim" },
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-    },
     { "pixelneo/vim-python-docstring" },
-    {
-        "ethanholz/nvim-lastplace",
-        event = "BufRead",
-        config = function()
-            require("nvim-lastplace").setup({
-                lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-                lastplace_ignore_filetype = {
-                    "gitcommit", "gitrebase", "svn", "hgcommit",
-                },
-                lastplace_open_folds = true,
-            })
-        end,
-    },
     {
         "sindrets/diffview.nvim",
         event = "BufRead",
@@ -206,7 +183,6 @@ return {
             require("lsp-file-operations").setup({ debug = false })
         end,
     },
-    { "ahmedkhalf/project.nvim" },
     { "stevearc/dressing.nvim" },
     {
         "mrded/nvim-lsp-notify",

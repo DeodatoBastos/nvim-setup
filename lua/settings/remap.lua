@@ -5,10 +5,10 @@ vim.keymap.set("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<C-s>", vim.cmd.w)
+vim.keymap.set("n", "<C-s>", vim.cmd.w, { desc = "Save File" })
 vim.keymap.set("n", "<leader>s", vim.cmd.so)
-vim.keymap.set("n", "\\", vim.cmd.vsplit)
-vim.keymap.set("n", "|", vim.cmd.split)
+vim.keymap.set("n", "\\", vim.cmd.vsplit, { desc = "Vertical Split" })
+vim.keymap.set("n", "|", vim.cmd.split, { desc = "Horizontal Split" })
 
 local keymap = vim.api.nvim_set_keymap
 
