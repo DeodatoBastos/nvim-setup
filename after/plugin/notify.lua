@@ -13,7 +13,7 @@ notify.setup({
     },
     level = 2,
     minimum_width = 50,
-    render = "compact",
+    render = "default",
     timeout = 5000,
     top_down = true,
     max_width = 300,
