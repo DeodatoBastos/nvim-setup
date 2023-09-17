@@ -30,6 +30,9 @@ local function lsp_keymaps(bufnr)
     keymap("n", "<leader>lk", function() vim.diagnostic.goto_prev({ buffer = 0 }) end, opts())
     keymap("n", "<leader>lr", vim.lsp.buf.rename, opts())
     keymap("n", "<leader>ls", vim.lsp.buf.signature_help, opts())
+    keymap("n", "<leader>k", function()
+        require('lsp_signature').toggle_float_win()
+    end, opts("Signature Help"))
     keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts())
     keymap("n", "<leader>lf", vim.lsp.buf.format, opts())
 end
@@ -38,6 +41,10 @@ local lspconfig = require("lspconfig")
 local on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
+    require("lsp_signature").on_attach({
+        bind = true,
+        handler_opts = { border = "rounded" }
+    }, bufnr)
 end
 
 for _, server in pairs(require("utils.servers")) do
