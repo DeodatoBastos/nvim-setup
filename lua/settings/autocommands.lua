@@ -6,6 +6,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
 })
 
+vim.api.nvim_create_autocmd({"FileType"}, {
+    pattern = {"dbui"},
+    callback = function()
+        vim.fn.execute("nmap <buffer> l <Plug>(DBUI_SelectLine)")
+    end,
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "gitcommit", "markdown" },
     callback = function()
