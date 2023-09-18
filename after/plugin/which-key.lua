@@ -17,6 +17,10 @@ local mappings = {
         l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
         Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
     },
+    n = {
+        "<cmd>edit ~/.config/nvim/init.lua<cr>",
+        "Edit Nvim Settings",
+    },
     C = {
         name = "Connections",
         a = { "<cmd>DBUIAddConnection<cr>", "Add Connection" },
