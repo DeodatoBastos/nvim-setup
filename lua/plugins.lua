@@ -214,10 +214,11 @@ return {
         end,
         dependencies = dbui_conf.dependencies,
     },
+    -- {
     {
-        "ray-x/lsp_signature.nvim",
+        "folke/noice.nvim",
         event = "VeryLazy",
         opts = {},
-        config = function(_, opts) require 'lsp_signature'.setup(opts) end
-    },
+        dependencies = { "MunifTanjim/nui.nvim", }
+    }
 }
