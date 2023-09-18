@@ -31,7 +31,7 @@ function M.lsp_keymaps(bufnr)
     keymap("n", "<leader>lj", function() vim.diagnostic.goto_next({ buffer = 0 }) end, opts())
     keymap("n", "<leader>lk", function() vim.diagnostic.goto_prev({ buffer = 0 }) end, opts())
     keymap("n", "<leader>lr", vim.lsp.buf.rename, opts())
-    keymap("n", "<leader>ls", vim.lsp.buf.signature_help, opts())
+    keymap("n", "<leader>lh", vim.lsp.buf.signature_help, opts("Signature Help"))
     keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts())
     keymap("n", "<leader>lf", vim.lsp.buf.format, opts())
 end

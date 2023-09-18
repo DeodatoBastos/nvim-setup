@@ -84,6 +84,7 @@ require("telescope").setup {
     }
 }
 require('telescope').load_extension('fzf')
+require("telescope").load_extension("noice")
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
