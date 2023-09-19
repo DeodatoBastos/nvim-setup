@@ -220,5 +220,6 @@ return {
         event = "VeryLazy",
         opts = {},
         dependencies = { "MunifTanjim/nui.nvim", }
-    }
+    },
+    { "b0o/schemastore.nvim" },
 }

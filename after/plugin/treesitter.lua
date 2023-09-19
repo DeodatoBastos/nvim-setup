@@ -1,5 +1,5 @@
 require 'nvim-treesitter.configs'.setup {
-    ensure_installed = { "bash", "c", "cpp", "lua", "javascript",
+    ensure_installed = { "bash", "c", "cpp", "lua",
         "json", "jsonc", "typescript", "python", "tsx",
         "r", "latex", "cmake", "make", "bibtex",
         "git_rebase", "sql", "ninja", "markdown",
