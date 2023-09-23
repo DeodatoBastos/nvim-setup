@@ -55,9 +55,6 @@ function _BTOP_TOGGLE()
     btop:toggle()
 end
 
-local function opts(desc)
-    return { desc = desc, noremap = true, silent = true }
-end
-
+local func = require("utils.functions")
 vim.keymap.set("n", "<leader>gg", "<CMD>lua _LAZYGIT_TOGGLE()<CR>")
-vim.keymap.set("n", "<leader>m", "<CMD>lua _BTOP_TOGGLE()<CR>", opts("System Monitor"))
+vim.keymap.set("n", "<leader>m", "<CMD>lua _BTOP_TOGGLE()<CR>", func.opts("System Monitor"))
