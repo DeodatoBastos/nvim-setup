@@ -1,7 +1,5 @@
 return {
     settings = {
-        markdown = {
-            filetypes = { "markdown" }
-        }
+        filetypes = { "markdown" }
     }
 }

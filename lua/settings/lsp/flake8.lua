@@ -1,7 +1,5 @@
 return {
     settings = {
-        python = {
-            extra_args = { "--max-line-length", "120" },
-        },
+        extra_args = { "--max-line-length", "120" },
     },
 }
