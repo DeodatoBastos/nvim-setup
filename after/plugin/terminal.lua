@@ -43,18 +43,46 @@ vim.api.nvim_create_autocmd("TermOpen", {
     end,
 })
 
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new { cmd = "lazygit", hidden = true }
-local btop = Terminal:new { cmd = "btop", hidden = true }
 
 function _LAZYGIT_TOGGLE()
+    local Terminal = require("toggleterm.terminal").Terminal
+    local lazygit = Terminal:new {
+        cmd = "lazygit",
+        hidden = true,
+        direction = "float",
+        float_opts = {
+            border = "none",
+            width = 100000,
+            height = 100000,
+        },
+        on_open = function(_)
+            vim.cmd "startinsert!"
+        end,
+        on_close = function(_) end,
+        count = 99,
+    }
     lazygit:toggle()
 end
 
 function _BTOP_TOGGLE()
+    local Terminal = require("toggleterm.terminal").Terminal
+    local btop = Terminal:new {
+        cmd = "btop",
+        hidden = true,
+        direction = "float",
+        float_opts = {
+            border = "none",
+            width = 100000,
+            height = 100000,
+        },
+        on_open = function(_)
+            vim.cmd "startinsert!"
+        end,
+        on_close = function(_) end,
+        count = 98,
+    }
     btop:toggle()
 end
 
-local func = require("utils.functions")
 vim.keymap.set("n", "<leader>gg", "<CMD>lua _LAZYGIT_TOGGLE()<CR>")
-vim.keymap.set("n", "<leader>m", "<CMD>lua _BTOP_TOGGLE()<CR>", func.opts("System Monitor"))
+vim.keymap.set("n", "<leader>m", "<CMD>lua _BTOP_TOGGLE()<CR>", require("utils.functions").opts("System Monitor"))
