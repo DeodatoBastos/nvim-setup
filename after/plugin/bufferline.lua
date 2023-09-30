@@ -50,21 +50,15 @@ bufferline.setup {
         left_mouse_command = "buffer %d",
         middle_mouse_command = nil,
         indicator = {
-            icon = icons.ui.BoldLineLeft,
-            style = "icon",
+            -- icon = icons.ui.BoldLineLeft,
+            style = "none",
         },
         buffer_close_icon = icons.ui.Close,
         modified_icon = icons.ui.Circle,
         close_icon = icons.ui.BoldClose,
         left_trunc_marker = icons.ui.ArrowCircleLeft,
         right_trunc_marker = icons.ui.ArrowCircleRight,
-        separator_style = "slant",
-        name_formatter = function(buf) -- buf contains a "name", "path" and "bufnr"
-            -- remove extension from markdown files for example
-            if buf.name:match "%.md" then
-                return vim.fn.fnamemodify(buf.name, ":t:r")
-            end
-        end,
+        separator_style = "thin",
         hover = {
             enabled = true,
             delay = 1,

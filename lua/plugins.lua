@@ -6,6 +6,20 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
+            require("tokyonight").setup({
+                style = "moon", -- "strom", "night", "moon"
+                transparent = true,
+                on_colors = function(colors)
+                    colors.hint = colors.blue
+                    colors.info = colors.green
+                    colors.error = colors.red
+                    colors.warning = colors.orange
+                end,
+                sidebars = { "qf", "vista_kind", "terminal", "packer", "NvimTree" },
+                dim_inactive = true,
+                lualine_bold = true,
+            })
+
             vim.cmd.colorscheme("tokyonight")
         end,
     },
@@ -110,7 +124,7 @@ return {
         "SmiteshP/nvim-navic",
         dependencies = { "neovim/nvim-lspconfig" }
     },
-    { "lukas-reineke/indent-blankline.nvim" },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
     {
         'numToStr/Comment.nvim',
         config = function()

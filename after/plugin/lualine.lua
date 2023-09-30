@@ -167,6 +167,7 @@ lualine.setup {
         component_separators = { left = "", right = "" },
         icons_enabled = true,
         disabled_filetypes = { "alpha" },
+        theme = "tokyonight",
     },
     extensions = {
         "toggleterm",
