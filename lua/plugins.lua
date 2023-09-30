@@ -101,6 +101,7 @@ return {
         "williamboman/mason.nvim",
         cmd = "Mason",
         event = "BufReadPre",
+        build = ":MasonUpdate",
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
         },

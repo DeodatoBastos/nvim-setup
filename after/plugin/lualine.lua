@@ -166,12 +166,13 @@ lualine.setup {
         fmt = string.lower,
         component_separators = { left = "", right = "" },
         icons_enabled = true,
-        disabled_filetypes = { "alpha" },
+        disabled_filetypes = { "alpha", "lazy" },
         theme = "tokyonight",
     },
     extensions = {
         "toggleterm",
         "trouble",
+        "nvim-tree"
     },
     sections = {
         lualine_a = { mode },
@@ -179,7 +180,7 @@ lualine.setup {
         lualine_c = { branch, py_env },
         lualine_x = { diagnostics, lsp, spaces, filetype },
         lualine_y = { "location" },
-        lualine_z = { progress },
+        lualine_z = {}, -- progress
     },
     inactive_sections = {
         lualine_a = { mode },
@@ -187,7 +188,7 @@ lualine.setup {
         lualine_c = { branch, py_env },
         lualine_x = { diagnostics, lsp, spaces, filetype },
         lualine_y = { "location" },
-        lualine_z = { progress },
+        lualine_z = {}, -- progress
     },
     winbar = {
         lualine_c = { breadcrumbs }

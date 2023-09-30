@@ -31,7 +31,7 @@ require 'nvim-treesitter.configs'.setup {
             json = "",
         },
         indent = { enable = true, disable = { "yaml" } },
-        autotag = { enable = false },
+        autotag = { enable = true},
         textobjects = {
             swap = {
                 enable = false,
