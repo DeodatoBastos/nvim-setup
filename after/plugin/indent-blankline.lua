@@ -1,5 +1,5 @@
 vim.opt.list = true
-vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append("space:⋅")
 
 local highlight = {
     "RainbowRed",
@@ -25,6 +25,6 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 end)
 
 require("ibl").setup({
-    indent = { highlight = highlight },
+    -- indent = { highlight = highlight },
     whitespace = { remove_blankline_trail = true },
 })

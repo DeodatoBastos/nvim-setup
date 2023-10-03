@@ -6,7 +6,7 @@ whichkey.setup({
         -- this is mostly relevant for keymaps that start with a native binding
         i = { "j", "k" },
         v = { "j", "k", "y", "d" },
-        n = { "y", "d", "v" }
+        n = { "y", "d", "v" },
     },
 })
 
@@ -130,6 +130,7 @@ local mappings = {
         l = { "<cmd>BufferLineCloseLeft<cr>", "Close next left" },
         r = { "<cmd>BufferLineCloseRight<cr>", "Close next right" },
     },
+    v = { "<cmd>lua require(''swenv.api).pick_venv()<cr>", "Choose venv" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     f = { "<cmd>Telescope git_files<cr>", "Find git files" },
     c = { "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", "Close Buffer" },
