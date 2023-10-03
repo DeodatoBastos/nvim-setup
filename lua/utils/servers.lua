@@ -1,15 +1,11 @@
 return {
     "lua_ls",
-    "stylua",
     "pyright",
-    -- "flake8",
     "clangd",
     -- "codelldb",
-    -- "clang_format",
     "cmake",
     -- "cmakelang",
     -- "cmakelint",
-    -- "codespell",
     "bashls",
     "svls",
     -- "asm_lsp",
@@ -20,6 +16,5 @@ return {
     "jsonls",
     "tsserver",
     "tailwindcss",
-    "prettier",
     "eslint",
 }

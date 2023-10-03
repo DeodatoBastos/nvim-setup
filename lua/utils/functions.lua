@@ -32,12 +32,30 @@ function M.lsp_keymaps(bufnr)
     keymap("n", "<leader>lI", vim.cmd.Mason, opts())
     keymap("n", "<leader>la", vim.lsp.buf.code_action, opts())
     keymap("n", "<leader>lt", vim.lsp.buf.type_definition, opts("Type Denifinition"))
-    keymap("n", "<leader>lj", function() vim.diagnostic.goto_next({ buffer = 0 }) end, opts())
-    keymap("n", "<leader>lk", function() vim.diagnostic.goto_prev({ buffer = 0 }) end, opts())
+    keymap("n", "<leader>lj", function()
+        vim.diagnostic.goto_next({ buffer = 0 })
+    end, opts())
+    keymap("n", "<leader>lk", function()
+        vim.diagnostic.goto_prev({ buffer = 0 })
+    end, opts())
     keymap("n", "<leader>lr", vim.lsp.buf.rename, opts())
     keymap("n", "<leader>lh", vim.lsp.buf.signature_help, opts("Signature Help"))
     keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts())
     keymap("n", "<leader>lf", vim.lsp.buf.format, opts())
+end
+
+function M.concatTables(a, b)
+    local result = {}
+
+    for _, value in ipairs(a) do
+        table.insert(result, value)
+    end
+
+    for _, value in ipairs(b) do
+        table.insert(result, value)
+    end
+
+    return result
 end
 
 return M

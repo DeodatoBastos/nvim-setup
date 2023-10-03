@@ -23,12 +23,36 @@ require("formatter").setup({
             end,
         },
 
+        javascriptreact = {
+            require("formatter.filetypes.javascript").prettier,
+
+            function()
+                return prettier_options
+            end,
+        },
+
         typescript = {
             require("formatter.filetypes.typescript").prettier,
 
             function()
                 return prettier_options
             end,
+        },
+
+        typescriptreact = {
+            require("formatter.filetypes.typescript").prettier,
+
+            function()
+                return prettier_options
+            end,
+        },
+
+        cmake = {
+            require("formatter.filetypes.cmake").cmakeformat,
+        },
+
+        cpp = {
+            require("formatter.filetypes.cpp").clangformat,
         },
 
         ["*"] = {

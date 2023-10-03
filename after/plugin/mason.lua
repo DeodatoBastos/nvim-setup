@@ -1,3 +1,6 @@
+local servers = require("utils.servers")
+local formatters_linters = require("utils.formatters_linters")
+
 require("mason").setup({
     ui = {
         border = "none",
@@ -9,8 +12,9 @@ require("mason").setup({
     },
     log_level = vim.log.levels.INFO,
     max_concurrent_installers = 4,
-    ensure_installed = require("utils.servers"),
+
+    ensure_installed = require("utils.functions").concatTables(servers, formatters_linters),
 })
-require("mason-lspconfig").setup {
+require("mason-lspconfig").setup({
     automatic_installation = true,
-}
+})
