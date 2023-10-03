@@ -113,6 +113,14 @@ return {
         dependencies = { { "hrsh7th/cmp-nvim-lsp" }, },
     },
     {
+        "mhartington/formatter.nvim",
+        event = "VeryLazy",
+    },
+    {
+        "mfussenegger/nvim-lint",
+        event = "VeryLazy",
+    },
+    {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
     },
@@ -150,7 +158,6 @@ return {
         opts = { ignore_missing = true },
     },
     { "ChristianChiarulli/swenv.nvim" },
-    { "stevearc/dressing.nvim" },
     { "p00f/clangd_extensions.nvim" },
     { "pixelneo/vim-python-docstring" },
     {

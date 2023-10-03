@@ -42,7 +42,7 @@ local lsp = {
         end
 
         -- add formatter
-        -- local formatters = require "lvim.lsp.null-ls.formatters"
+        -- local formatters = require("formatter")
         -- local supported_formatters = formatters.list_registered(buf_ft)
         -- vim.list_extend(buf_client_names, supported_formatters)
 

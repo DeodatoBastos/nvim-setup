@@ -1,5 +1,6 @@
 return {
     "lua_ls",
+    "stylua",
     "pyright",
     -- "flake8",
     "clangd",
@@ -19,5 +20,6 @@ return {
     "jsonls",
     "tsserver",
     "tailwindcss",
+    "prettier",
     "eslint",
 }
