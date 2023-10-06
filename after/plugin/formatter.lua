@@ -1,3 +1,5 @@
+local util = require("formatter.util")
+
 local prettier_options = {
     exe = "prettier",
     args = {
@@ -5,7 +7,10 @@ local prettier_options = {
         "--tab-width 4",
         "--quote-props consistent",
         "--print-width 120",
+        "--stdin-filepath",
+        util.escape_path(util.get_current_buffer_file_path()),
     },
+    stdin = true,
 }
 
 local defaults = require("formatter.defaults")
@@ -65,7 +70,7 @@ require("formatter").setup({
     },
 })
 
-vim.keymap.set({ "n" }, "<leader>lf", "<cmd>FormatWriteLock<cr>", require("utils.functions").opts("Format"))
+vim.keymap.set({ "n" }, "<leader>lf", "<cmd>FormatWriteLock<cr>", require("utils.functions").opts("Format (formatter)"))
 
 -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 --     command = "FormatWriteLock",
