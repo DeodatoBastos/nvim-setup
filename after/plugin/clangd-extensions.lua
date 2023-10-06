@@ -1,5 +1,3 @@
-local icons = require("utils.icons")
-
 require("clangd_extensions").setup({
     extensions = {
         autoSetHints = true,

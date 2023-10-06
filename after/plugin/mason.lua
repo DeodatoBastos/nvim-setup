@@ -1,13 +1,14 @@
 local servers = require("utils.servers")
 local formatters_linters = require("utils.formatters_linters")
+local icons = require("utils.icons")
 
 require("mason").setup({
     ui = {
         border = "none",
         icons = {
-            package_installed = "◍",
-            package_pending = "◍",
-            package_uninstalled = "◍",
+            package_installed = icons.ui.Check,
+            package_pending = icons.ui.Circle,
+            package_uninstalled = icons.ui.Close,
         },
     },
     log_level = vim.log.levels.INFO,
