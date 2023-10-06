@@ -6,7 +6,7 @@ local branch_icon = icons.git.Branch
 
 local conditions = {
     buffer_not_empty = function()
-        return vim.fn.empty(vim.fn.expand "%:t") ~= 1
+        return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
     end,
     hide_in_width = function()
         return vim.o.columns > window_width_limit
@@ -14,19 +14,19 @@ local conditions = {
 }
 
 local function env_cleanup(venv)
-  if string.find(venv, "/") then
-    local final_venv = venv
-    for w in venv:gmatch "([^/]+)" do
-      final_venv = w
+    if string.find(venv, "/") then
+        local final_venv = venv
+        for w in venv:gmatch("([^/]+)") do
+            final_venv = w
+        end
+        venv = final_venv
     end
-    venv = final_venv
-  end
-  return venv
+    return venv
 end
 
 local lsp = {
     function()
-        local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
+        local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
         if #buf_clients == 0 then
             return "LSP Inactive"
         end
@@ -42,14 +42,11 @@ local lsp = {
         end
 
         -- add formatter
-        -- local formatters = require("formatter")
-        -- local supported_formatters = formatters.list_registered(buf_ft)
-        -- vim.list_extend(buf_client_names, supported_formatters)
-
+        -- vim.list_extend(buf_client_names, linters)
+        --
         -- add linter
-        -- local linters = require "lvim.lsp.null-ls.linters"
-        -- local supported_linters = linters.list_registered(buf_ft)
-        -- vim.list_extend(buf_client_names, supported_linters)
+        -- local linters = require("lint").linters_by_ft[buf_ft]
+        -- vim.list_extend(buf_client_names, linters)
 
         local unique_client_names = table.concat(buf_client_names, ", ")
         local language_servers = string.format("[%s]", unique_client_names)
@@ -60,28 +57,34 @@ local lsp = {
     cond = conditions.hide_in_width,
 }
 
-local mode = { "mode", fmt = function(str) return str:sub(1, 1) end, icons_enabled = true, }
+local mode = {
+    "mode",
+    fmt = function(str)
+        return str:sub(1, 1)
+    end,
+    icons_enabled = true,
+}
 local filename = {
     "filename",
     symbols = {
-        modified = '[+]',      -- Text to show when the file is modified.
-        readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
-        unnamed = '[No Name]', -- Text to show for unnamed buffers.
-        newfile = '[New]',     -- Text to show for newly created file before first write
-    }
+        modified = "[+]",      -- Text to show when the file is modified.
+        readonly = "[-]",      -- Text to show when the file is non-modifiable or readonly.
+        unnamed = "[No Name]", -- Text to show for unnamed buffers.
+        newfile = "[New]",     -- Text to show for newly created file before first write
+    },
 }
 local branch = {
     "branch",
     icon = branch_icon,
-    color = { gui = "bold" }
+    color = { gui = "bold" },
 }
 local py_env = {
     function()
         if vim.bo.filetype == "python" then
-            local venv = os.getenv "CONDA_DEFAULT_ENV" or os.getenv "VIRTUAL_ENV"
+            local venv = os.getenv("CONDA_DEFAULT_ENV") or os.getenv("VIRTUAL_ENV")
             if venv then
-                local icon = require "nvim-web-devicons"
-                local py_icon, _ = icon.get_icon ".py"
+                local icon = require("nvim-web-devicons")
+                local py_icon, _ = icon.get_icon(".py")
                 return string.format(" " .. py_icon .. " (%s)", env_cleanup(venv))
             end
         end
@@ -114,7 +117,7 @@ local filetype = {
     "filetype",
     colored = true,
     icon_only = false,
-    icon = { align = "left" }
+    icon = { align = "left" },
 }
 
 local progress = {
@@ -126,13 +129,13 @@ local progress = {
 }
 
 local get_filename = function()
-    local name = vim.fn.expand "%:t"
-    local extension = vim.fn.expand "%:e"
+    local name = vim.fn.expand("%:t")
+    local extension = vim.fn.expand("%:e")
     local f = require("utils.functions")
 
     if not f.isempty(name) then
         local file_icon, hl_group
-        local devicons = require "nvim-web-devicons"
+        local devicons = require("nvim-web-devicons")
         file_icon, hl_group = devicons.get_icon(name, extension, { default = true })
 
         local navic_id = vim.api.nvim_get_hl_id_by_name("navic")
@@ -158,10 +161,10 @@ local breadcrumbs = {
     navic_opts = nil,
     cond = function()
         return navic.is_available()
-    end
+    end,
 }
 
-lualine.setup {
+lualine.setup({
     options = {
         fmt = string.lower,
         component_separators = { left = "", right = "" },
@@ -172,7 +175,7 @@ lualine.setup {
     extensions = {
         "toggleterm",
         "trouble",
-        "nvim-tree"
+        "nvim-tree",
     },
     sections = {
         lualine_a = { mode },
@@ -191,13 +194,13 @@ lualine.setup {
         lualine_z = {}, -- progress
     },
     winbar = {
-        lualine_c = { breadcrumbs }
+        lualine_c = { breadcrumbs },
     },
     inactive_winbar = {
-        lualine_c = { breadcrumbs }
+        lualine_c = { breadcrumbs },
     },
     -- tabline = {
     -- lualine_a = { "tabs" },
     --     lualine_z = { { "datetime", style = "%d/%m" }, { "datetime", style = "%H:%M" } },
     -- },
-}
+})
