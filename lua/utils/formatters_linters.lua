@@ -4,5 +4,4 @@ return {
     "prettier",
     "codespell",
     "clang-format",
-    "cmake-format",
 }

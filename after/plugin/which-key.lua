@@ -76,7 +76,7 @@ local mappings = {
             "<cmd>lua vim.diagnostic.goto_prev()<cr>",
             "Prev Diagnostic",
         },
-        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+        L = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
         t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },

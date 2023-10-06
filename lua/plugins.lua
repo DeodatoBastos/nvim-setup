@@ -104,6 +104,7 @@ return {
         build = ":MasonUpdate",
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim"
         },
     },
     {
@@ -114,11 +115,11 @@ return {
     },
     {
         "mhartington/formatter.nvim",
-        event = "VeryLazy",
+        event = {"BufReadPre", "BufNewFile"},
     },
     {
         "mfussenegger/nvim-lint",
-        event = "VeryLazy",
+        event = {"BufReadPre", "BufNewFile"},
     },
     {
         'nvim-lualine/lualine.nvim',

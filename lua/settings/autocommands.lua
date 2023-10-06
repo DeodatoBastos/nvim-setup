@@ -29,14 +29,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     callback = function()
-        vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
-    end,
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    pattern = { "*.java" },
-    callback = function()
-        vim.lsp.codelens.refresh()
+        vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
     end,
 })
 
@@ -60,8 +53,4 @@ vim.api.nvim_create_autocmd("FileType", {
         "sql",
     },
     command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    command = "FormatWriteLock"
 })

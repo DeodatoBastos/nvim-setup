@@ -3,20 +3,24 @@ local prettier_options = {
     args = {
         "--write",
         "--tab-width 4",
-        "--quote-props as-consistent",
+        "--quote-props consistent",
+        "--print-width 120",
     },
 }
+
+local defaults = require("formatter.defaults")
+local prettier = defaults.prettier
 
 require("formatter").setup({
     logging = true,
     log_level = vim.log.levels.WARN,
     filetype = {
         lua = {
-            require("formatter.filetypes.lua").stylua,
+            defaults.stylua,
         },
 
         javascript = {
-            require("formatter.filetypes.javascript").prettier,
+            prettier,
 
             function()
                 return prettier_options
@@ -24,7 +28,7 @@ require("formatter").setup({
         },
 
         javascriptreact = {
-            require("formatter.filetypes.javascript").prettier,
+            prettier,
 
             function()
                 return prettier_options
@@ -32,7 +36,7 @@ require("formatter").setup({
         },
 
         typescript = {
-            require("formatter.filetypes.typescript").prettier,
+            prettier,
 
             function()
                 return prettier_options
@@ -40,7 +44,7 @@ require("formatter").setup({
         },
 
         typescriptreact = {
-            require("formatter.filetypes.typescript").prettier,
+            prettier,
 
             function()
                 return prettier_options
@@ -48,15 +52,21 @@ require("formatter").setup({
         },
 
         cmake = {
-            require("formatter.filetypes.cmake").cmakeformat,
+            defaults.cmakeformat,
         },
 
         cpp = {
-            require("formatter.filetypes.cpp").clangformat,
+            defaults.clangformat,
         },
 
         ["*"] = {
-            require("formatter.filetypes.any").remove_trailing_whitespace,
+            defaults.remove_trailing_whitespace,
         },
     },
 })
+
+vim.keymap.set({ "n" }, "<leader>lf", "<cmd>FormatWriteLock<cr>", require("utils.functions").opts("Format"))
+
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--     command = "FormatWriteLock",
+-- })

@@ -13,8 +13,12 @@ require("mason").setup({
     log_level = vim.log.levels.INFO,
     max_concurrent_installers = 4,
 
-    ensure_installed = require("utils.functions").concatTables(servers, formatters_linters),
+    ensure_installed = servers,
 })
 require("mason-lspconfig").setup({
     automatic_installation = true,
+})
+
+require("mason-tool-installer").setup({
+    ensure_installed = formatters_linters
 })
