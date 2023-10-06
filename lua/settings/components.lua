@@ -44,13 +44,22 @@ M.lsp = {
 
         -- add formatter
         local formatters = require("formatter.util").get_available_formatters_for_ft(buf_ft)
-        vim.list_extend(buf_client_names, formatters)
-        --
-        -- add linter
-        -- local linters = require("lint").linters_by_ft[buf_ft]
-        -- vim.list_extend(buf_client_names, linters)
+        for _, formatter in ipairs(formatters) do
+            table.insert(buf_client_names, formatter.exe)
+        end
 
-        local unique_client_names = table.concat(buf_client_names, ", ")
+        -- add linter
+        local linters = require("lint").linters_by_ft[buf_ft]
+        local generic_linters = require("lint").linters_by_ft["*"]
+        if linters then
+            vim.list_extend(buf_client_names, linters)
+        end
+        if generic_linters then
+            vim.list_extend(buf_client_names, generic_linters)
+        end
+
+        local unique_buf_client_names = require("utils.functions").removeDuplicates(buf_client_names)
+        local unique_client_names = table.concat(unique_buf_client_names, ", ")
         local language_servers = string.format("[%s]", unique_client_names)
 
         return language_servers

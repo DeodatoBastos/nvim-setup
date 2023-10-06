@@ -58,4 +58,18 @@ function M.concatTables(a, b)
     return result
 end
 
+function M.removeDuplicates(inputTable)
+    local seen = {}
+    local result = {}
+
+    for _, value in ipairs(inputTable) do
+        if not seen[value] then
+            table.insert(result, value)
+            seen[value] = true
+        end
+    end
+
+    return result
+end
+
 return M

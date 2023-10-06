@@ -8,6 +8,7 @@ local prettier_options = {
     },
 }
 
+local util = require("formatter.util")
 local defaults = require("formatter.defaults")
 local prettier = defaults.prettier
 
@@ -16,7 +17,21 @@ require("formatter").setup({
     log_level = vim.log.levels.WARN,
     filetype = {
         lua = {
-            defaults.stylua,
+            require("formatter.filetypes.lua").stylua,
+
+            function()
+                return {
+                    exe = "stylua",
+                    args = {
+                        "--search-parent-directories",
+                        "--stdin-filepath",
+                        util.escape_path(util.get_current_buffer_file_path()),
+                        "--",
+                        "-",
+                    },
+                    stdin = true,
+                }
+            end
         },
 
         javascript = {
@@ -52,7 +67,7 @@ require("formatter").setup({
         },
 
         cmake = {
-            defaults.cmakeformat,
+            require("formatter.filetypes.cmake").cmakeformat,
         },
 
         cpp = {
@@ -60,7 +75,7 @@ require("formatter").setup({
         },
 
         ["*"] = {
-            defaults.remove_trailing_whitespace,
+            require("formatter.filetypes.any").remove_trailing_whitespace,
         },
     },
 })
