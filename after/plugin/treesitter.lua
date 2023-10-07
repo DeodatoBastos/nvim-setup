@@ -1,12 +1,29 @@
-require 'nvim-treesitter.configs'.setup {
-    ensure_installed = { "bash", "c", "cpp", "lua",
-        "json", "jsonc", "typescript", "python", "tsx",
-        "r", "latex", "cmake", "make", "bibtex",
-        "git_rebase", "sql", "ninja", "markdown",
-        "verilog", "comment", "markdown_inline"
+require("nvim-treesitter.configs").setup({
+    ensure_installed = {
+        "bash",
+        "c",
+        "cpp",
+        "lua",
+        "json",
+        "jsonc",
+        "typescript",
+        "python",
+        "tsx",
+        "r",
+        "latex",
+        "cmake",
+        "make",
+        "bibtex",
+        "git_rebase",
+        "sql",
+        "ninja",
+        "markdown",
+        "verilog",
+        "comment",
+        "markdown_inline",
     },
 
-    ignore_install = {"haskell"},
+    ignore_install = { "haskell" },
     modules = {},
 
     sync_install = false,
@@ -31,7 +48,7 @@ require 'nvim-treesitter.configs'.setup {
             json = "",
         },
         indent = { enable = true, disable = { "yaml" } },
-        autotag = { enable = true},
+        autotag = { enable = true },
         textobjects = {
             swap = {
                 enable = false,
@@ -49,8 +66,15 @@ require 'nvim-treesitter.configs'.setup {
         },
         rainbow = {
             enable = true,
-            extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+            extended_mode = true,  -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
             max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
         },
     },
-}
+
+    autotag = {
+        enable = true,
+        enable_rename = true,
+        enable_close = true,
+        enable_close_on_slash = true,
+    }
+})

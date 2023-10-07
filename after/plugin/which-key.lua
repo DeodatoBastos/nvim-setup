@@ -65,7 +65,7 @@ local mappings = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         F = { "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", "Format (LSP)" },
-        -- F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
+        f = { "<cmd>FormatWriteLock<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         I = { "<cmd>Mason<cr>", "Mason" },
         j = {
@@ -136,6 +136,7 @@ local mappings = {
     c = { "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", "Close Buffer" },
     s = { "<cmd>source %<cr>", "Source file" },
     h = { "<cmd>nohlsearch<cr>", "No Highlight" },
+    ["\\"] = { '<cmd>Docstring<cr>', "Comment" },
     ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
 }
 

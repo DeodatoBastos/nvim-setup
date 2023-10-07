@@ -15,7 +15,7 @@ return {
                     colors.error = colors.red
                     colors.warning = colors.orange
                 end,
-                sidebars = { "qf", "vista_kind", "terminal", "packer", "NvimTree" },
+                sidebars = { "qf", "toggleterm", "NvimTree" },
                 dim_inactive = true,
                 lualine_bold = true,
             })
@@ -35,49 +35,48 @@ return {
     },
     {
         "folke/neoconf.nvim",
-        cmd = "Neoconf"
+        cmd = "Neoconf",
     },
     {
         "folke/neodev.nvim",
         lazy = true,
-        opts = {}
+        opts = {},
     },
     {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.2',
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.2",
         dependencies = {
-            'nvim-lua/plenary.nvim',
+            "nvim-lua/plenary.nvim",
             "ahmedkhalf/project.nvim",
             {
-                'nvim-telescope/telescope-fzf-native.nvim',
+                "nvim-telescope/telescope-fzf-native.nvim",
                 build =
-                'cmake -S. -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+                "cmake -S. -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
             },
-        }
-    },
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
-        dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            "mrjones2014/nvim-ts-rainbow",
         },
     },
     {
-        'windwp/nvim-autopairs',
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            "mrjones2014/nvim-ts-rainbow",
+            "windwp/nvim-ts-autotag",
+        },
+    },
+    {
+        "windwp/nvim-autopairs",
         event = "InsertEnter",
-        dependencies = { 'hrsh7th/nvim-cmp' },
+        dependencies = { "hrsh7th/nvim-cmp" },
         config = function()
-            require("nvim-autopairs").setup {}
+            require("nvim-autopairs").setup({})
             -- If you want to automatically add `(` after selecting a function or method
-            local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-            local cmp = require('cmp')
-            cmp.event:on(
-                'confirm_done',
-                cmp_autopairs.on_confirm_done()
-            )
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            local cmp = require("cmp")
+            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
-        opts = {} -- this is equalent to setup({}) function
+        opts = {}, -- this is equalent to setup({}) function
     },
     {
         "hrsh7th/nvim-cmp",
@@ -104,44 +103,44 @@ return {
         build = ":MasonUpdate",
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
-            "WhoIsSethDaniel/mason-tool-installer.nvim"
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
     },
     {
         "neovim/nvim-lspconfig",
         lazy = false,
         event = { "BufReadPre" },
-        dependencies = { { "hrsh7th/cmp-nvim-lsp" }, },
+        dependencies = { { "hrsh7th/cmp-nvim-lsp" } },
     },
     {
         "mhartington/formatter.nvim",
-        event = {"BufReadPre", "BufNewFile"},
+        event = { "BufReadPre", "BufNewFile" },
     },
     {
         "mfussenegger/nvim-lint",
-        event = {"BufReadPre", "BufNewFile"},
+        event = { "BufReadPre", "BufNewFile" },
     },
     {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
     },
     {
-        'akinsho/bufferline.nvim',
+        "akinsho/bufferline.nvim",
         version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons'
+        dependencies = "nvim-tree/nvim-web-devicons",
     },
     {
         "SmiteshP/nvim-navic",
-        dependencies = { "neovim/nvim-lspconfig" }
+        dependencies = { "neovim/nvim-lspconfig" },
     },
     { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
     {
-        'numToStr/Comment.nvim',
+        "numToStr/Comment.nvim",
         config = function()
-            require('Comment').setup()
-        end
+            require("Comment").setup()
+        end,
     },
-    { 'kazhala/close-buffers.nvim' },
+    { "kazhala/close-buffers.nvim" },
     { "onsails/lspkind.nvim" },
     {
         "nvim-tree/nvim-tree.lua",
@@ -152,7 +151,7 @@ return {
         },
     },
     { "lewis6991/gitsigns.nvim" },
-    { "rcarriga/nvim-notify", },
+    { "rcarriga/nvim-notify" },
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -160,16 +159,13 @@ return {
     },
     { "ChristianChiarulli/swenv.nvim" },
     { "p00f/clangd_extensions.nvim" },
-    { "pixelneo/vim-python-docstring" },
+    {
+        "pixelneo/vim-python-docstring",
+        cmd = { "Docstring" },
+    },
     {
         "sindrets/diffview.nvim",
         event = "BufRead",
-    },
-    {
-        "windwp/nvim-ts-autotag",
-        config = function()
-            require("nvim-ts-autotag").setup()
-        end,
     },
     {
         "folke/lsp-colors.nvim",
@@ -180,21 +176,21 @@ return {
         event = "BufReadPre",
         module = "persistence",
         config = function()
-            require("persistence").setup {
-                dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+            require("persistence").setup({
+                dir = vim.fn.expand(vim.fn.stdpath("config") .. "/session/"),
                 options = { "buffers", "curdir", "tabpages", "winsize" },
-            }
+            })
         end,
     },
     { "RRethy/vim-illuminate" },
     {
-        'akinsho/toggleterm.nvim',
+        "akinsho/toggleterm.nvim",
         version = "*",
         init = function()
             require("settings.terminal").init()
         end,
         event = "VeryLazy",
-        config = true
+        config = true,
     },
     {
         "antosha417/nvim-lsp-file-operations",
@@ -214,7 +210,7 @@ return {
             require("lsp-notify").setup({
                 notify = require("notify"),
             })
-        end
+        end,
     },
     {
         "ethanholz/nvim-lastplace",
@@ -223,7 +219,10 @@ return {
             require("nvim-lastplace").setup({
                 lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
                 lastplace_ignore_filetype = {
-                    "gitcommit", "gitrebase", "svn", "hgcommit",
+                    "gitcommit",
+                    "gitrebase",
+                    "svn",
+                    "hgcommit",
                 },
                 lastplace_open_folds = true,
             })
@@ -242,7 +241,7 @@ return {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {},
-        dependencies = { "MunifTanjim/nui.nvim", }
+        dependencies = { "MunifTanjim/nui.nvim" },
     },
     { "b0o/schemastore.nvim" },
 }
