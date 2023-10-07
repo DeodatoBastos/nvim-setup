@@ -1,5 +1,5 @@
 local navic = require("nvim-navic")
-local icons = require("utils.icons")
+local icons = require("deodato.utils.icons")
 local branch_icon = icons.git.Branch
 local window_width_limit = 100
 
@@ -58,7 +58,7 @@ M.lsp = {
             vim.list_extend(buf_client_names, generic_linters)
         end
 
-        local unique_buf_client_names = require("utils.functions").removeDuplicates(buf_client_names)
+        local unique_buf_client_names = require("deodato.utils.functions").removeDuplicates(buf_client_names)
         local unique_client_names = table.concat(unique_buf_client_names, ", ")
         local language_servers = string.format("[%s]", unique_client_names)
 
@@ -145,7 +145,7 @@ M.progress = {
 function M.get_filename()
     local name = vim.fn.expand("%:t")
     local extension = vim.fn.expand("%:e")
-    local f = require("utils.functions")
+    local f = require("deodato.utils.functions")
 
     if not f.isempty(name) then
         local file_icon, hl_group
@@ -164,8 +164,8 @@ M.breadcrumbs = {
     function()
         local name = M.get_filename()
         local location = navic.get_location()
-        local separator = require("utils.icons").ui.ChevronRight
-        if not require("utils.functions").isempty(location) then
+        local separator = require("deodato.utils.icons").ui.ChevronRight
+        if not require("deodato.utils.functions").isempty(location) then
             name = name .. " " .. separator .. " " .. location
         end
 

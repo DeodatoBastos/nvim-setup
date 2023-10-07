@@ -1,0 +1,1 @@
+return { "ChristianChiarulli/swenv.nvim" }

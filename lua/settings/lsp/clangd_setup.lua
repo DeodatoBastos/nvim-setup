@@ -13,7 +13,7 @@ end
 
 local function on_attach(client, bufnr)
     clang_keymaps(bufnr)
-    require("utils.functions").lsp_keymaps(bufnr)
+    require("deodato.utils.functions").lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
     require("clangd_extensions.inlay_hints").setup_autocmd()
     require("clangd_extensions.inlay_hints").set_inlay_hints()
