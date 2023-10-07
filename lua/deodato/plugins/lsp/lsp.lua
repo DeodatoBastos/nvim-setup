@@ -23,7 +23,7 @@ return {
             require("illuminate").on_attach(client)
         end
 
-        for _, server in pairs(require("utils.servers")) do
+        for _, server in pairs(require("deodato.utils.servers")) do
             server = vim.split(server, "@")[1]
 
             if server == "clangd" then

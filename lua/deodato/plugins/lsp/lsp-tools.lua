@@ -23,13 +23,14 @@ return {
             require("lsp-file-operations").setup({ debug = false })
         end,
     },
-    {
-        "mrded/nvim-lsp-notify",
-        dependencies = { "rcarriga/nvim-notify" },
-        config = function()
-            require("lsp-notify").setup({
-                notify = require("notify"),
-            })
-        end,
-    },
+    { "b0o/schemastore.nvim" },
+    -- {
+    --     "mrded/nvim-lsp-notify",
+    --     dependencies = { "rcarriga/nvim-notify" },
+    --     config = function()
+    --         require("lsp-notify").setup({
+    --             notify = require("notify"),
+    --         })
+    --     end,
+    -- },
 }
