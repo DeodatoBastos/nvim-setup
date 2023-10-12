@@ -7,6 +7,7 @@ return {
 
         lint.linters_by_ft = {
             python = { "flake8" },
+            -- go = { "golangcilint" },
             ["*"] = { "codespell" },
             -- javascript = {"eslint"},
             -- javascriptreact = {"eslint"},
@@ -17,6 +18,10 @@ return {
         lint.linters.flake8.args = {
             "--max-line-length 120",
         }
+
+        -- lint.linters.golangcilint.args = {
+
+        -- }
 
         local lint_autogroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

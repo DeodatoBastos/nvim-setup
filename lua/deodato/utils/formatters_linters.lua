@@ -4,4 +4,5 @@ return {
     "prettier",
     "codespell",
     "clang-format",
+    "gofumpt",
 }

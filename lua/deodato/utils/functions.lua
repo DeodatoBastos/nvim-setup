@@ -41,7 +41,7 @@ function M.lsp_keymaps(bufnr)
     keymap("n", "<leader>lr", vim.lsp.buf.rename, opts())
     keymap("n", "<leader>lh", vim.lsp.buf.signature_help, opts("Signature Help"))
     keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts())
-    keymap("n", "<leader>lf", vim.lsp.buf.format, opts())
+    keymap("n", "<leader>lF", vim.lsp.buf.format, opts())
 end
 
 function M.concatTables(a, b)

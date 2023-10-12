@@ -17,4 +17,6 @@ return {
     "tsserver",
     "tailwindcss",
     "eslint",
+    "gopls",
+    -- "golangci_lint_ls",
 }
