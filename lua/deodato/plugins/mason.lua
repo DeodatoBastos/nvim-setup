@@ -14,7 +14,7 @@ return {
 
         require("mason").setup({
             ui = {
-                border = "none",
+                border = "rounded",
                 icons = {
                     package_installed = icons.ui.Check,
                     package_pending = icons.ui.Circle,

@@ -11,13 +11,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+local plugins = {
     { import = "deodato.plugins" },
     { import = "deodato.plugins.lsp" },
     { import = "deodato.plugins.python" },
-}, {
+}
+
+require("lazy").setup(plugins, {
     install = { colorscheme = { "tokyonight" } },
-    ui = { wrap = true },
+    ui = {
+        border = "rounded",
+        title = " Lazy Plugin Manager ",
+    },
     debug = false,
     performance = {
         rtp = {
