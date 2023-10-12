@@ -75,14 +75,8 @@ return {
                 custom_filter = custom_filter,
                 offsets = {
                     {
-                        filetype = "undotree",
-                        text = "Undotree",
-                        highlight = "PanelHeading",
-                        padding = 1,
-                    },
-                    {
                         filetype = "NvimTree",
-                        text = "Explorer",
+                        text = "File Explorer",
                         highlight = "PanelHeading",
                         padding = 1,
                     },
@@ -91,11 +85,6 @@ return {
                         text = "Diff View",
                         highlight = "PanelHeading",
                         padding = 1,
-                    },
-                    {
-                        filetype = "flutterToolsOutline",
-                        text = "Flutter Outline",
-                        highlight = "PanelHeading",
                     },
                     {
                         filetype = "lazy",
@@ -113,10 +102,10 @@ return {
             },
         })
 
-        require('close_buffers').setup({
-            preserve_window_layout = { 'this' },
+        require("close_buffers").setup({
+            preserve_window_layout = { "this" },
             next_buffer_cmd = function(windows)
-                require('bufferline').cycle(1)
+                require("bufferline").cycle(1)
                 local bufnr = vim.api.nvim_get_current_buf()
 
                 for _, window in ipairs(windows) do

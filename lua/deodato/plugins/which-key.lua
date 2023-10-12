@@ -26,7 +26,7 @@ return {
                 l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
                 Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
             },
-            n = {
+            N = {
                 "<cmd>edit ~/.config/nvim/init.lua<cr>",
                 "Edit Nvim Settings",
             },
@@ -137,8 +137,8 @@ return {
                 s = { "<cmd>BufferLineSortByDirectory<cr>", "Sort" },
                 d = { "<cmd>BufferLinePickClose<cr>", "Pick Close" },
                 D = { "<cmd>BufferLineCloseOthers<cr>", "Close all others buffers" },
-                l = { "<cmd>BufferLineCloseLeft<cr>", "Close next left" },
-                r = { "<cmd>BufferLineCloseRight<cr>", "Close next right" },
+                l = { "<cmd>BufferLineCloseLeft<cr>", "Close all left" },
+                r = { "<cmd>BufferLineCloseRight<cr>", "Close all right" },
             },
             v = { "<cmd>lua require(''swenv.api).pick_venv()<cr>", "Choose venv" },
             e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
