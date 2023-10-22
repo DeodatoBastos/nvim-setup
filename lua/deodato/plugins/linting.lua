@@ -6,22 +6,17 @@ return {
         local lint = require("lint")
 
         lint.linters_by_ft = {
+            -- ["*"] = { "codespell" },
             python = { "flake8" },
-            -- go = { "golangcilint" },
-            ["*"] = { "codespell" },
-            -- javascript = {"eslint"},
-            -- javascriptreact = {"eslint"},
-            -- typescript = {"eslint"},
-            -- typescriptreact = {"eslint"},
+            javascript = {"eslint"},
+            javascriptreact = {"eslint"},
+            typescript = {"eslint"},
+            typescriptreact = {"eslint"},
         }
 
         lint.linters.flake8.args = {
             "--max-line-length 120",
         }
-
-        -- lint.linters.golangcilint.args = {
-
-        -- }
 
         local lint_autogroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

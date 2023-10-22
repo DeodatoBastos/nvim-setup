@@ -1,9 +1,14 @@
 return {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
     settings = {
         gopls = {
-            cmd = { "gopls" },
-            filetypes = { "go", "gomod", "gowork", "gotmpl" },
             gofumpt = true,
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+                unusedoarams = true,
+            },
         },
     },
 }

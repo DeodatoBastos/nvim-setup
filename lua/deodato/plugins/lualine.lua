@@ -6,7 +6,6 @@ return {
 
         require("lualine").setup({
             options = {
-                fmt = string.lower,
                 component_separators = { left = "", right = "" },
                 icons_enabled = true,
                 disabled_filetypes = { "alpha", "lazy" },

@@ -1,6 +1,7 @@
 return {
+    cmd = { "svls" },
+    filetypes = { "verilog", "systemverilog" },
     settings = {
-        cmd = { "svls" },
-        filetypes = { "verilog", "systemverilog" }
-    }
+        svls = {},
+    },
 }
