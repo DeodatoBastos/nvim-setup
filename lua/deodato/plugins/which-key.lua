@@ -38,7 +38,7 @@ return {
                 l = { "<cmd>DBUILastQueryInfo<cr>", "Last Query Info" },
                 h = { "<cmd>DBUIHideNotifications<cr>", "Hide Notifications" },
             },
-            a = { "<cmd>DBUIToggle<cr>", "DB Connections" },
+            a = { "<cmd>DBUIToggle<cr>", "Toggle DB Connections" },
             t = {
                 name = "Trouble",
                 r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -145,8 +145,8 @@ return {
             f = { "<cmd>Telescope git_files<cr>", "Find git files" },
             c = { "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", "Close Buffer" },
             s = { "<cmd>source %<cr>", "Source file" },
-            h = { "<cmd>nohlsearch<cr>", "No Highlight" },
-            ["\\"] = { '<cmd>Docstring<cr>', "Add DocString" },
+            H = { "<cmd>nohlsearch<cr>", "No Highlight" },
+            ["\\"] = { "<cmd>Docstring<cr>", "Add DocString" },
             ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
         }
 
