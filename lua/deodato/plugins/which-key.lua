@@ -140,7 +140,7 @@ return {
                 l = { "<cmd>BufferLineCloseLeft<cr>", "Close all left" },
                 r = { "<cmd>BufferLineCloseRight<cr>", "Close all right" },
             },
-            v = { "<cmd>lua require(''swenv.api).pick_venv()<cr>", "Choose venv" },
+            v = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose venv" },
             e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
             f = { "<cmd>Telescope git_files<cr>", "Find git files" },
             c = { "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", "Close Buffer" },

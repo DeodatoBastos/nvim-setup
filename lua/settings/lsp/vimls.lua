@@ -1,6 +1,5 @@
 return {
-    settings = {
-        cmd = { "vim-language-server", "--stdio" },
-        filetypes = { "vim" },
-    }
+    cmd = { "vim-language-server", "--stdio" },
+    filetypes = { "vim" },
+    settings = {},
 }

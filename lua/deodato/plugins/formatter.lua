@@ -8,7 +8,7 @@ return {
                 "--write",
                 "--tab-width 4",
                 "--quote-props consistent",
-                "--print-width 120",
+                "--print-width 150",
             },
         }
 

@@ -8,10 +8,10 @@ return {
         lint.linters_by_ft = {
             -- ["*"] = { "codespell" },
             python = { "flake8" },
-            javascript = {"eslint"},
-            javascriptreact = {"eslint"},
-            typescript = {"eslint"},
-            typescriptreact = {"eslint"},
+            -- javascript = {"eslint"},
+            -- javascriptreact = {"eslint"},
+            -- typescript = {"eslint"},
+            -- typescriptreact = {"eslint"},
         }
 
         lint.linters.flake8.args = {
