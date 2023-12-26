@@ -113,7 +113,8 @@ return {
                 o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
                 b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
                 c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-                d = { "<cmd>DiffViewOpen HEAD<cr>", "Diff" },
+                d = { "<cmd>DiffviewOpen HEAD<cr>", "Diff" },
+                m = { "<cmd>DiffviewOpen<cr>", "Merge Tools" },
                 h = {
                     "<cmd>DiffviewFileHistoryPanel<cr>",
                     "File History",
@@ -145,10 +146,9 @@ return {
             e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
             f = { "<cmd>Telescope git_files<cr>", "Find git files" },
             c = {
-name = "Close Stuff",
-            b = { "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", "Close Buffer" },
-            t = {"<cmd>tabclose<cr>", "Close Tab"},
-        },
+                "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>",
+                "Close Buffer",
+            },
             s = { "<cmd>source %<cr>", "Source file" },
             H = { "<cmd>nohlsearch<cr>", "No Highlight" },
             ["\\"] = { "<cmd>Docstring<cr>", "Add DocString" },
