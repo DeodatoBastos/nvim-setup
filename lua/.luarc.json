@@ -56,5 +56,6 @@
         "/home/deodato/.local/share/nvim/lazy/neodev.nvim/types/stable",
         "/home/deodato/.config/nvim/lua",
         "${3rd}/luv/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

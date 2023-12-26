@@ -79,6 +79,7 @@ return {
                 }),
             }),
             formatting = {
+                expandable_indicator = true,
                 fields = { "kind", "abbr", "menu" },
                 format = lspkind.cmp_format({
                     before = function(entry, vim_item)

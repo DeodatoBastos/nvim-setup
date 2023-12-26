@@ -113,9 +113,10 @@ return {
                 o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
                 b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
                 c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-                d = {
-                    "<cmd>Gitsigns diffthis HEAD<cr>",
-                    "Diff",
+                d = { "<cmd>DiffViewOpen HEAD<cr>", "Diff" },
+                h = {
+                    "<cmd>DiffviewFileHistoryPanel<cr>",
+                    "File History",
                 },
             },
             L = {
@@ -143,7 +144,11 @@ return {
             v = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose venv" },
             e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
             f = { "<cmd>Telescope git_files<cr>", "Find git files" },
-            c = { "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", "Close Buffer" },
+            c = {
+name = "Close Stuff",
+            b = { "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", "Close Buffer" },
+            t = {"<cmd>tabclose<cr>", "Close Tab"},
+        },
             s = { "<cmd>source %<cr>", "Source file" },
             H = { "<cmd>nohlsearch<cr>", "No Highlight" },
             ["\\"] = { "<cmd>Docstring<cr>", "Add DocString" },
