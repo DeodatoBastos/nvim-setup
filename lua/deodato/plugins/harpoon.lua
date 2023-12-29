@@ -54,6 +54,7 @@ return {
                 end,
                 "Toogle UI",
             },
+
             ["<C-a>"] = {
                 function()
                     harpoon:list():append()
@@ -73,5 +74,5 @@ return {
         }
 
         whichkey.register(mappings, {})
-        end,
+    end,
 }
