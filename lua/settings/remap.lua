@@ -1,5 +1,4 @@
 local opts = require("deodato.utils.functions").opts
--- local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 vim.keymap.set("", "<Space>", "<Nop>", opts())
