@@ -9,6 +9,9 @@ return {
             analyses = {
                 unusedoarams = true,
             },
+            initializationOptions = {
+                vulncheck = "Imports",
+            },
         },
     },
 }

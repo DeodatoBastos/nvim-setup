@@ -6,7 +6,7 @@ return {
         local lint = require("lint")
 
         lint.linters_by_ft = {
-            -- ["*"] = { "codespell" },
+            ["*"] = { "codespell" },
             python = { "flake8" },
             -- javascript = {"eslint"},
             -- javascriptreact = {"eslint"},

@@ -11,6 +11,13 @@ return {
                 "--print-width 150",
             },
         }
+        local clangformat_options = {
+            exe = "clang-format",
+            args = {
+                -- '--style="{BasedOnStyle: WebKit, ColumnLimit: 100, IndentWidth: 8}"',
+                '--style="{BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 100}"'
+            },
+        }
 
         local util = require("formatter.util")
         local defaults = require("formatter.defaults")
@@ -76,6 +83,18 @@ return {
 
                 cpp = {
                     defaults.clangformat,
+
+                    function ()
+                        return clangformat_options
+                    end
+                },
+
+                c = {
+                    defaults.clangformat,
+
+                    function ()
+                        return clangformat_options
+                    end
                 },
 
                 go = {
