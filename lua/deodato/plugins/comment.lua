@@ -3,7 +3,6 @@ return {
     config = function()
         require("Comment").setup({
             ignore = "^$", -- empty lines,
-            pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
         })
 
         vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)")

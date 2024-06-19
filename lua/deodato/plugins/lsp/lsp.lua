@@ -18,7 +18,7 @@ return {
         capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
         local lspconfig = require("lspconfig")
-        local on_attach = function(client, bufnr)
+        local on_attach = function(_, bufnr)
             require("deodato.utils.functions").lsp_keymaps(bufnr)
             require("illuminate").on_attach(client)
         end
@@ -97,8 +97,8 @@ return {
             "hint",
         }
 
-        vim.lsp.handlers["window/showMessage"] = function(_, method, params, _)
-            vim.notify(method.message, severity[params.type])
+        vim.lsp.handlers["window/showMessage"] = function(_, _, ctx, _)
+            vim.notify(ctx.method, severity[ctx.params.type])
         end
     end
 }
