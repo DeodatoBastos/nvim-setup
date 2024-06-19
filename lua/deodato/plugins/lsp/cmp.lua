@@ -84,9 +84,6 @@ return {
                 format = lspkind.cmp_format({
                     before = function(entry, vim_item)
                         local word = entry:get_insert_text()
-                        if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
-                            word = vim.lsp.util.parse_snippet(word)
-                        end
                         word = str.oneline(word)
 
                         if
@@ -95,6 +92,7 @@ return {
                         then
                             word = word .. "~"
                         end
+
                         vim_item.abbr = word
                         vim_item.kind = kind_icons[vim_item.kind]
 

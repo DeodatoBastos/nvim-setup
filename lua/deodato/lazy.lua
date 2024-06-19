@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
     { import = "deodato.plugins" },
     { import = "deodato.plugins.lsp" },
-    { import = "deodato.plugins.python" },
 }
 
 require("lazy").setup(plugins, {

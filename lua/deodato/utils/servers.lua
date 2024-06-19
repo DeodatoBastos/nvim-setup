@@ -1,13 +1,13 @@
 return {
     "lua_ls",
     "pyright",
-    "clangd",
+    -- "clangd",
     -- "codelldb",
     "cmake",
     -- "cmakelang",
     -- "cmakelint",
     "bashls",
-    "svls",
+    -- "svls",
     -- "asm_lsp",
     "vimls",
     "marksman",
@@ -17,6 +17,6 @@ return {
     "tsserver",
     "tailwindcss",
     "eslint",
-    "gopls",
+    -- "gopls",
     -- "golangci_lint_ls",
 }

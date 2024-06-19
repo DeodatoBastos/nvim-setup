@@ -27,16 +27,15 @@ end
 
 M.lsp = {
     function()
-        local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
-        if #buf_clients == 0 then
+        local clients = vim.lsp.get_clients()
+        if #clients == 0 then
             return "LSP Inactive"
         end
 
         local buf_ft = vim.bo.filetype
         local buf_client_names = {}
 
-        -- add client
-        for _, client in pairs(buf_clients) do
+        for _, client in ipairs(clients) do
             if client.name ~= "null-ls" then
                 table.insert(buf_client_names, client.name)
             end
@@ -49,14 +48,14 @@ M.lsp = {
         end
 
         -- add linter
-        local linters = require("lint").linters_by_ft[buf_ft]
-        local generic_linters = require("lint").linters_by_ft["*"]
-        if linters then
+        local linters = require("lint").get_running()
+        -- local generic_linters = require("lint").linters_by_ft["*"]
+        if #linters > 0 then
             vim.list_extend(buf_client_names, linters)
         end
-        if generic_linters then
-            vim.list_extend(buf_client_names, generic_linters)
-        end
+        -- if generic_linters then
+        --     vim.list_extend(buf_client_names, generic_linters)
+        -- end
 
         local unique_buf_client_names = require("deodato.utils.functions").removeDuplicates(buf_client_names)
         local unique_client_names = table.concat(unique_buf_client_names, ", ")
@@ -95,7 +94,7 @@ M.branch = {
 M.py_env = {
     function()
         if vim.bo.filetype == "python" then
-            local venv = os.getenv("CONDA_DEFAULT_ENV") or os.getenv("VIRTUAL_ENV")
+            local venv = os.getenv("VIRTUAL_ENV")
             if venv then
                 local icon = require("nvim-web-devicons")
                 local py_icon, _ = icon.get_icon(".py")

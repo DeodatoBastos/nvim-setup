@@ -42,12 +42,13 @@ return {
             t = {
                 name = "Trouble",
                 r = { "<cmd>Trouble lsp_references<cr>", "References" },
-                f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-                d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-                q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-                l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-                w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
-                t = { "<cmd>TroubleToggle<cr>", "Toggle Trouble" },
+                f = { "<cmd>Trouble lsp toggle focus=false win.position=bottom<cr>", "Definitions" },
+                d = { "<cmd>Trouble diagnostics<cr>", "Diagnostics" },
+                s = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols" },
+                q = { "<cmd>Trouble qflist toggle<cr>", "QuickFix" },
+                l = { "<cmd>Trouble loclist toggle<cr>", "LocationList" },
+                w = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics" },
+                t = { "<cmd>Trouble diagnostics toggle<cr>", "Toggle Trouble" },
             },
             p = {
                 name = "Find in Project",
@@ -98,7 +99,6 @@ return {
             },
             g = {
                 name = "Git",
-                g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
                 j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
                 k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
                 l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -113,12 +113,6 @@ return {
                 o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
                 b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
                 c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-                d = { "<cmd>DiffviewOpen HEAD<cr>", "Diff" },
-                m = { "<cmd>DiffviewOpen<cr>", "Merge Tools" },
-                h = {
-                    "<cmd>DiffviewFileHistoryPanel<cr>",
-                    "File History",
-                },
             },
             L = {
                 name = "Lazy",
@@ -142,7 +136,6 @@ return {
                 l = { "<cmd>BufferLineCloseLeft<cr>", "Close all left" },
                 r = { "<cmd>BufferLineCloseRight<cr>", "Close all right" },
             },
-            v = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose venv" },
             e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
             f = { "<cmd>Telescope git_files<cr>", "Find git files" },
             c = {
@@ -150,8 +143,8 @@ return {
                 "Close Buffer",
             },
             s = { "<cmd>source %<cr>", "Source file" },
-            H = { "<cmd>nohlsearch<cr>", "No Highlight" },
-            ["\\"] = { "<cmd>Docstring<cr>", "Add DocString" },
+            d = { "<Plug>(doge-generate)", "Generate docstring" },
+            h = { "<cmd>nohlsearch<cr>", "No Highlight" },
             ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
         }
 

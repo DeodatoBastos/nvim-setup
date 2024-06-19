@@ -1,9 +1,9 @@
 return {
     -- root_dir = require("utils").get_python_root,
     settings = {
-        python = {
+        pyright = {
             analysis = {
-                typeCheckingMode = "basic",
+                typeCheckingMode = "strict",
                 autoImportCompletions = true,
             },
             disableOrganizeImports = false,
@@ -11,6 +11,10 @@ return {
                 variableTypes = true,
                 functionReturnTypes = true,
             },
+            include = {
+                "src"
+            },
+            reportMissingImports = true,
         },
     },
 }

@@ -1,8 +1,9 @@
 return {
     "stylua",
     "flake8",
+    "pylint",
     "prettier",
     "codespell",
-    "clang-format",
-    "gofumpt",
+    -- "clang-format",
+    -- "gofumpt",
 }

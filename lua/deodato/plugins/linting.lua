@@ -7,7 +7,8 @@ return {
 
         lint.linters_by_ft = {
             ["*"] = { "codespell" },
-            python = { "flake8" },
+            python = { "flake8", "pylint" },
+            -- python = { "flake8" },
             -- javascript = {"eslint"},
             -- javascriptreact = {"eslint"},
             -- typescript = {"eslint"},
@@ -18,9 +19,16 @@ return {
             "--max-line-length 120",
         }
 
+        lint.linters.pylint.args = {
+            "--max-line-length=120",
+            "--docstring-min-length=15",
+            "--disable=C0114",
+        }
+        lint.linters.pylint.cwd = "./src/"
+
         local lint_autogroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
-        vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+        vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
             group = lint_autogroup,
             callback = function()
                 require("lint").try_lint()

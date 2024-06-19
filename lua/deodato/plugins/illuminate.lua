@@ -4,6 +4,7 @@ return {
         require("illuminate").configure({
             filetypes_denylist = {
                 "dirvish",
+                "dirbuf",
                 "fugitive",
                 "alpha",
                 "NvimTree",
