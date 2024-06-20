@@ -6,10 +6,16 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     config = function()
+        vim.g.loaded_netrw = 1
+        vim.g.loaded_netrwPlugin = 1
         local custom_icons = require("deodato.utils.icons")
 
         local function start_telescope(telescope_mode)
             local node = require("nvim-tree.lib").get_node_at_cursor()
+            if node == nil then
+                return
+            end
+
             local abspath = node.link_to or node.absolute_path
             local is_folder = node.open ~= nil
             local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ":h")
@@ -81,7 +87,7 @@ return {
                 -- root_folder_label = ":t",
                 indent_width = 2,
                 indent_markers = {
-                    enable = false,
+                    enable = true,
                     inline_arrows = true,
                     icons = {
                         corner = "└",

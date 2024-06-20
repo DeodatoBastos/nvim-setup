@@ -22,6 +22,9 @@ require("lazy").setup(plugins, {
         border = "rounded",
         title = " Lazy Plugin Manager ",
     },
+    change_detection = {
+        notify = false,
+    },
     debug = false,
     performance = {
         rtp = {
