@@ -1,12 +1,23 @@
 return {
     "neovim/nvim-lspconfig",
     lazy = false,
-    event = { "BufReadPre" },
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        { "antosha417/nvim-lsp-file-operations", config = true },
+    },
     config = function()
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        local mason_lspconfig = require("mason-lspconfig")
+        local lspconfig = require("lspconfig")
+        local icons = require("deodato.utils.icons").diagnostics
+        local servers = require("deodato.utils.servers")
+        local capabilities = vim.tbl_deep_extend(
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            cmp_nvim_lsp.default_capabilities()
+        )
         capabilities.textDocument.completion.completionItem.snippetSupport = true
         capabilities.textDocument.completion.completionItem.resolveSupport = {
             properties = {
@@ -15,46 +26,51 @@ return {
                 "additionalTextEdits",
             },
         }
-        capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
-        local lspconfig = require("lspconfig")
         local on_attach = function(_, bufnr)
             require("deodato.utils.functions").lsp_keymaps(bufnr)
-            require("illuminate").on_attach(client)
+            -- require("illuminate").on_attach(client)
         end
 
-        for _, server in pairs(require("deodato.utils.servers")) do
-            server = vim.split(server, "@")[1]
+        mason_lspconfig.setup({
+            ensure_installed = servers,
+            handlers = {
+                function(server_name)
+                    Opts = {
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                    }
 
-            if server == "clangd" then
-                local provider = require("settings.lsp.clangd_setup")
-                Opts = {
-                    on_attach = provider.on_attach,
-                    capabilities = capabilities,
-                    on_init = provider.on_init,
-                }
-            else
-                Opts = {
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                }
-            end
+                    local require_ok, conf_opts = pcall(require, "settings.lsp." .. server_name)
+                    if require_ok then
+                        Opts = vim.tbl_deep_extend("force", conf_opts, Opts)
+                    end
 
-            local require_ok, conf_opts = pcall(require, "settings.lsp." .. server)
-            if require_ok then
-                Opts = vim.tbl_deep_extend("force", conf_opts, Opts)
-            end
+                    lspconfig[server_name].setup(Opts)
+                end,
 
-            lspconfig[server].setup(Opts)
-        end
+                ["clangd"] = function()
+                    local provider = require("settings.lsp.clangd_setup")
+                    Opts = {
+                        capabilities = capabilities,
+                        on_attach = provider.on_attach,
+                        on_init = provider.on_init,
+                    }
 
-        local icons = require("deodato.utils.icons").diagnostics
+                    local require_ok, conf_opts = pcall(require, "settings.lsp.clangd")
+                    if require_ok then
+                        Opts = vim.tbl_deep_extend("force", conf_opts, Opts)
+                    end
+                    lspconfig["clangd"].setup(Opts)
+                end,
+            },
+        })
 
         local signs = {
             { name = "DiagnosticSignError", text = icons.BoldError },
-            { name = "DiagnosticSignWarn",  text = icons.BoldWarning },
-            { name = "DiagnosticSignHint",  text = icons.BoldInformation },
-            { name = "DiagnosticSignInfo",  text = icons.BoldQuestion },
+            { name = "DiagnosticSignWarn", text = icons.BoldWarning },
+            { name = "DiagnosticSignHint", text = icons.BoldInformation },
+            { name = "DiagnosticSignInfo", text = icons.BoldQuestion },
         }
 
         for _, sign in ipairs(signs) do
@@ -100,5 +116,5 @@ return {
         vim.lsp.handlers["window/showMessage"] = function(_, _, ctx, _)
             vim.notify(ctx.method, severity[ctx.params.type])
         end
-    end
+    end,
 }

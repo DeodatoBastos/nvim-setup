@@ -8,7 +8,6 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
-        local servers = require("deodato.utils.servers")
         local formatters_linters = require("deodato.utils.formatters_linters")
         local icons = require("deodato.utils.icons")
 
@@ -23,15 +22,10 @@ return {
             },
             log_level = vim.log.levels.INFO,
             max_concurrent_installers = 4,
-
-            ensure_installed = servers,
-        })
-        require("mason-lspconfig").setup({
-            automatic_installation = true,
         })
 
         require("mason-tool-installer").setup({
-            ensure_installed = formatters_linters
+            ensure_installed = formatters_linters,
         })
     end,
 }
