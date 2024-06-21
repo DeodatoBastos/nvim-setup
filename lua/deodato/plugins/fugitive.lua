@@ -15,8 +15,8 @@ return {
 
                 local mappings = {
                     p = { "<cmd>Git push<cr>", "push" },
-                    P = { "<cmd>Git pull --rebase<cr>", "push" },
-                    t = { "<cmd>Git push -u origin <cr>", "push" },
+                    P = { "<cmd>Git pull --rebase<cr>", "pull" },
+                    t = { "<cmd>Git push -u origin <cr>", "push untrack" },
                 }
 
                 whichkey.register(mappings, { prefix = "<leader>" })

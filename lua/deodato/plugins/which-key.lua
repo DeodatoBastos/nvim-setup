@@ -47,7 +47,7 @@ return {
                 s = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols" },
                 q = { "<cmd>Trouble qflist toggle<cr>", "QuickFix" },
                 l = { "<cmd>Trouble loclist toggle<cr>", "LocationList" },
-                w = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics" },
+                b = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics" },
                 t = { "<cmd>Trouble diagnostics toggle<cr>", "Toggle Trouble" },
             },
             p = {
