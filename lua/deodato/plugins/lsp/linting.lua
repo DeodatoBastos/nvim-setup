@@ -3,8 +3,16 @@ return {
     event = { "BufReadPre", "BufNewFile" },
 
     init = function()
-        require("lint").linters.pylint.cwd = vim.fn.getcwd() .. "/src"
-        require("lint").linters.flake8.cwd = vim.fn.getcwd() .. "/src"
+        local f = require("deodato.utils.functions")
+        local dir = vim.fn.getcwd()
+        local src_dir = dir .. "/src"
+        if f.is_directory(src_dir) then
+            require("lint").linters.pylint.cwd = src_dir
+            require("lint").linters.flake8.cwd = src_dir
+        else
+            require("lint").linters.pylint.cwd = dir
+            require("lint").linters.flake8.cwd = dir
+        end
     end,
 
     config = function()
@@ -13,7 +21,6 @@ return {
         lint.linters_by_ft = {
             ["*"] = { "codespell" },
             python = { "flake8", "pylint" },
-            -- python = { "flake8" },
             -- javascript = {"eslint"},
             -- javascriptreact = {"eslint"},
             -- typescript = {"eslint"},

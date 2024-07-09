@@ -3,8 +3,9 @@ return {
     settings = {
         pyright = {
             analysis = {
-                typeCheckingMode = "strict",
+                typeCheckingMode = "basic",
                 autoImportCompletions = true,
+                diagnosticMode = "openFilesOnly", -- workspace
             },
             disableOrganizeImports = false,
             inlayHints = {

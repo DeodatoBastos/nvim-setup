@@ -36,26 +36,20 @@ M.lsp = {
         local buf_client_names = {}
 
         for _, client in ipairs(clients) do
-            if client.name ~= "null-ls" then
-                table.insert(buf_client_names, client.name)
-            end
+            table.insert(buf_client_names, client.name)
         end
 
-        -- add formatter
         local formatters = require("formatter.util").get_available_formatters_for_ft(buf_ft)
         for _, formatter in ipairs(formatters) do
             table.insert(buf_client_names, formatter.exe)
         end
 
         -- add linter
-        local linters = require("lint").get_running()
+        local linters = require("lint").linters_by_ft[buf_ft]
         -- local generic_linters = require("lint").linters_by_ft["*"]
-        if #linters > 0 then
+        if linters ~= nil and #linters > 0 then
             vim.list_extend(buf_client_names, linters)
         end
-        -- if generic_linters then
-        --     vim.list_extend(buf_client_names, generic_linters)
-        -- end
 
         local unique_buf_client_names = require("deodato.utils.functions").removeDuplicates(buf_client_names)
         local unique_client_names = table.concat(unique_buf_client_names, ", ")
@@ -78,10 +72,10 @@ M.mode = {
 M.filename = {
     "filename",
     symbols = {
-        modified = "[+]",      -- Text to show when the file is modified.
-        readonly = "[-]",      -- Text to show when the file is non-modifiable or readonly.
+        modified = "[+]", -- Text to show when the file is modified.
+        readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
         unnamed = "[No Name]", -- Text to show for unnamed buffers.
-        newfile = "[New]",     -- Text to show for newly created file before first write
+        newfile = "[New]", -- Text to show for newly created file before first write
     },
 }
 

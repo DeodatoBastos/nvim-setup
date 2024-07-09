@@ -14,7 +14,6 @@ return {
         local clangformat_options = {
             exe = "clang-format",
             args = {
-                -- '--style="{BasedOnStyle: WebKit, ColumnLimit: 100, IndentWidth: 8}"',
                 '--style="{BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 100}"'
             },
         }

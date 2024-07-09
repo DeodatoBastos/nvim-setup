@@ -17,6 +17,9 @@ return {
             telemetry = {
                 enable = false,
             },
+            hint = {
+                true,
+            },
             runtime = {
                 version = "LuaJIT",
                 special = {

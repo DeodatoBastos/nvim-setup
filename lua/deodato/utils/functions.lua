@@ -1,9 +1,17 @@
 local M = {}
 
+---@param path string
+function M.is_directory(path)
+    local ok, _ = os.rename(path, path)
+    return ok
+end
+
+---@param desc string
 function M.opts(desc)
     return { desc = desc, noremap = true, silent = true }
 end
 
+---@param s string
 function M.isempty(s)
     return s == nil or s == ""
 end
@@ -17,7 +25,9 @@ function M.get_buf_option(opt)
     end
 end
 
+---@param bufnr integer
 function M.lsp_keymaps(bufnr)
+    ---@param desc string
     local function opts(desc)
         return { desc = desc, buffer = bufnr, noremap = true, silent = true }
     end
@@ -28,22 +38,24 @@ function M.lsp_keymaps(bufnr)
     keymap("n", "gi", vim.lsp.buf.implementation, opts("Go to Implementation"))
     keymap("n", "gr", vim.lsp.buf.references, opts("Find references"))
     keymap("n", "gl", vim.diagnostic.open_float, opts("Open Float"))
-    keymap("n", "<leader>li", vim.cmd.LspInfo, opts())
-    keymap("n", "<leader>lI", vim.cmd.Mason, opts())
-    keymap("n", "<leader>la", vim.lsp.buf.code_action, opts())
+    keymap("n", "<leader>li", vim.cmd.LspInfo, opts("Info"))
+    keymap("n", "<leader>lI", vim.cmd.Mason, opts("Mason"))
+    keymap("n", "<leader>la", vim.lsp.buf.code_action, opts("Code Action"))
     keymap("n", "<leader>lt", vim.lsp.buf.type_definition, opts("Type Denifinition"))
     keymap("n", "<leader>lj", function()
         vim.diagnostic.goto_next({ buffer = 0 })
-    end, opts())
+    end, opts("Next diagnostic"))
     keymap("n", "<leader>lk", function()
         vim.diagnostic.goto_prev({ buffer = 0 })
-    end, opts())
-    keymap("n", "<leader>lr", vim.lsp.buf.rename, opts())
+    end, opts("Previous diagnostic"))
+    keymap("n", "<leader>lr", vim.lsp.buf.rename, opts("Rename"))
     keymap("n", "<leader>lh", vim.lsp.buf.signature_help, opts("Signature Help"))
-    keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts())
-    keymap("n", "<leader>lF", vim.lsp.buf.format, opts())
+    keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts("Quick fix"))
+    keymap("n", "<leader>lF", vim.lsp.buf.format, opts("Format (LSP)"))
 end
 
+---@param a table
+---@param b table
 function M.concatTables(a, b)
     local result = {}
 
@@ -58,11 +70,12 @@ function M.concatTables(a, b)
     return result
 end
 
-function M.removeDuplicates(inputTable)
+---@param a table
+function M.removeDuplicates(a)
     local seen = {}
     local result = {}
 
-    for _, value in ipairs(inputTable) do
+    for _, value in ipairs(a) do
         if not seen[value] then
             table.insert(result, value)
             seen[value] = true
