@@ -1,7 +1,7 @@
 local opts = require("deodato.utils.functions").opts
 local term_opts = { silent = true }
 
-vim.keymap.set("", "<Space>", "<Nop>", opts())
+vim.keymap.set("", "<Space>", "<Nop>", opts("Leader"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 

@@ -14,7 +14,7 @@ return {
     "sqlls",
     -- "texlab",
     "jsonls",
-    "tsserver",
+    -- "tsserver",
     "tailwindcss",
     "eslint",
     -- "gopls",

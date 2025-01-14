@@ -1,7 +1,7 @@
 return {
     "tpope/vim-fugitive",
     config = function()
-        local whichkey = require("which-key")
+        local wk = require("which-key")
 
         local gfugite = vim.api.nvim_create_augroup("gfugitive", {})
         local autocmd = vim.api.nvim_create_autocmd
@@ -14,14 +14,14 @@ return {
                 end
 
                 local mappings = {
-                    g = {
-                        p = { "<cmd>Git push<cr>", "push" },
-                        P = { "<cmd>Git pull --rebase<cr>", "pull" },
-                        t = { "<cmd>Git push -u origin <cr>", "push untrack" },
+                    { "<leader>g", group = "Git",
+                        { "<leader>gp", "<cmd>Git push<cr>", desc = "push" },
+                        { "<leader>gp", "<cmd>Git pull --rebase<cr>", desc = "pull" },
+                        { "<leader>gp", "<cmd>Git push -u origin <cr>", desc = "push untrack" },
                     },
                 }
 
-                whichkey.register(mappings, { prefix = "<leader>" })
+                wk.add(mappings)
             end,
         })
     end,

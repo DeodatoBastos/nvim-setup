@@ -3,6 +3,10 @@ return {
     config = function()
         require("Comment").setup({
             ignore = "^$", -- empty lines,
+            mappings = {
+                basic = false,
+                extra = false,
+            }
         })
 
         vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)")

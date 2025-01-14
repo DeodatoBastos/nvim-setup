@@ -4,7 +4,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
         local harpoon = require("harpoon")
-        local whichkey = require("which-key")
+        -- local whichkey = require("which-key")
 
         harpoon:setup()
 
@@ -73,6 +73,6 @@ return {
             },
         }
 
-        whichkey.register(mappings, {})
+        -- whichkey.add(mappings)
     end,
 }

@@ -6,15 +6,14 @@ return {
         "ahmedkhalf/project.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
-            build =
-            "cmake -S. -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+            build = "cmake -S. -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
         },
     },
     config = function()
         local icons = require("deodato.utils.icons")
         local actions = require("telescope.actions")
 
-        require("telescope").setup {
+        require("telescope").setup({
             defaults = {
                 prompt_prefix = icons.ui.Telescope .. " ",
                 selection_caret = icons.ui.Forward .. " ",
@@ -35,8 +34,18 @@ return {
                     "--hidden",
                     "--glob=!.git/",
                 },
-                file_ignore_patterns = { ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4",
-                    "%.zip" },
+                file_ignore_patterns = {
+                    ".git/",
+                    ".cache",
+                    "%.o",
+                    "%.a",
+                    "%.out",
+                    "%.class",
+                    "%.pdf",
+                    "%.mkv",
+                    "%.mp4",
+                    "%.zip",
+                },
                 path_display = { "smart" },
                 winblend = 0,
                 border = {},
@@ -55,9 +64,9 @@ return {
                                 require("telescope.actions").close(prompt_bufnr)
                                 -- Depending on what you want put `cd`, `lcd`, `tcd`
                                 vim.cmd(string.format("silent m %s", dir))
-                            end
-                        }
-                    }
+                            end,
+                        },
+                    },
                 },
                 live_grep = {
                     only_sort_text = true,
@@ -95,19 +104,19 @@ return {
                     override_file_sorter = true,
                     case_mode = "smart_case",
                 },
-            }
-        }
+            },
+        })
 
         require("project_nvim").setup({
             detection_methods = { "pattern" },
             patterns = { ".git", "Makefile", "package.json", "requirements.txt" },
         })
-        require('telescope').load_extension('fzf')
+        require("telescope").load_extension("fzf")
         require("telescope").load_extension("noice")
         require("telescope").load_extension("projects")
 
-        local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>ps', function()
+        local builtin = require("telescope.builtin")
+        vim.keymap.set("n", "<leader>ps", function()
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end, { desc = "Grep String" })
     end,

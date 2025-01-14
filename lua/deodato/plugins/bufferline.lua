@@ -70,7 +70,6 @@ return {
                     reveal = { "close" },
                 },
                 diagnostics = "nvim_lsp",
-                diagnostics_update_in_insert = true,
                 diagnostics_indicator = diagnostics_indicator,
                 custom_filter = custom_filter,
                 offsets = {
@@ -101,6 +100,8 @@ return {
                 persist_buffer_sort = true,
             },
         })
+
+       vim.diagnostic.config { update_in_insert = true }
 
         require("close_buffers").setup({
             preserve_window_layout = { "this" },
