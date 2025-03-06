@@ -27,7 +27,10 @@ return {
             -- typescriptreact = {"eslint"},
         }
 
+        lint.linters.flake8.cmd = "python"
         lint.linters.flake8.args = {
+            "-m",
+            "flake8",
             "--max-line-length 120",
             "--format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s",
             "--no-show-source",
@@ -38,7 +41,10 @@ return {
             "-",
         }
 
+        lint.linters.pylint.cmd = "python"
         lint.linters.pylint.args = {
+            "-m",
+            "pylint",
             "-f",
             "json",
             "--max-line-length=120",
