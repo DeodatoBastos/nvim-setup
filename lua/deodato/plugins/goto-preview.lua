@@ -5,4 +5,7 @@ return {
             default_mappings = true,
         })
     end,
+    dependencies = {
+        "rmagatti/logger.nvim",
+    },
 }

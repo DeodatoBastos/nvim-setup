@@ -259,5 +259,14 @@ return {
         api.events.subscribe(api.events.Event.FileCreated, function(file)
             vim.cmd("edit " .. file.fname)
         end)
+
+        require("nvim-treesitter.configs").setup({
+            ensure_installed = {
+                "lua",
+                "vim",
+                "regex", -- add others you need
+            },
+            highlight = { enable = true },
+        })
     end,
 }

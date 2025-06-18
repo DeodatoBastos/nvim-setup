@@ -1,3 +1,38 @@
+-- vim.api.nvim_create_autocmd({ "BufWritePost", "DiagnosticChanged" }, {
+--     callback = function()
+--         local function is_loclist_open()
+--             for _, win in ipairs(vim.api.nvim_list_wins()) do
+--                 if vim.fn.getloclist(vim.api.nvim_win_get_buf(win), { winid = 0 }).winid ~= 0 then
+--                     return true
+--                 end
+--             end
+--             return false
+--         end
+
+--         if is_loclist_open() then
+--             vim.diagnostic.setloclist({ open = false })
+--         end
+--     end,
+-- })
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    callback = function()
+        local function is_loclist_open()
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                if vim.fn.getloclist(vim.api.nvim_win_get_buf(win), { winid = 0 }).winid ~= 0 then
+                    return true
+                end
+            end
+            return false
+        end
+
+        if is_loclist_open() then
+            vim.diagnostic.setloclist({ open = false })
+            vim.diagnostic.setqflist({ open = false })
+        end
+    end,
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
     callback = function()

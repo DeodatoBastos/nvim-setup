@@ -59,6 +59,7 @@ return {
                 "<leader>l",
                 group = "LSP",
                 { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+                { "<leader>ld", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "List Diagnostic" },
                 { "<leader>lF", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", desc = "Format (LSP)" },
                 { "<leader>lf", "<cmd>FormatWriteLock<cr>", desc = "Format" },
                 { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
@@ -67,7 +68,7 @@ return {
                 { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
                 { "<leader>lL", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
                 { "<leader>lt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
-                { "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", desc = "Quickfix" },
+                { "<leader>lq", "<cmd>lua vim.diagnostic.setqflist()<cr>", desc = "Quickfix" },
                 { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
                 { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
                 { "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
@@ -135,9 +136,10 @@ return {
             { "<leader>d", "<Plug>(doge-generate)", desc = "Generate docstring" },
             { "<leader>h", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
             { "<leader>/", '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', desc = "Comment" },
+            { "<C-;>", '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', desc = "Comment" },
         }
 
         wk.add(mappings)
     end,
-    opts = {},
+    -- opts = {},
 }
