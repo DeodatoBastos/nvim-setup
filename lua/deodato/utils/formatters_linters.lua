@@ -4,6 +4,6 @@ return {
     "pylint",
     "prettier",
     "codespell",
-    -- "clang-format",
+    "clang-format",
     -- "gofumpt",
 }

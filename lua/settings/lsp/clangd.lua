@@ -20,6 +20,7 @@ local cmd_table = {
     -- "--header-insertion=never",
     -- "--query-driver=<list-of-white-listed-complers>"
 }
+
 return {
     settings = {
         cpp = {

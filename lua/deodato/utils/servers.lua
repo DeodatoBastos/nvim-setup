@@ -1,7 +1,7 @@
 return {
     "lua_ls",
     "pyright",
-    -- "clangd",
+    "clangd",
     -- "codelldb",
     "cmake",
     -- "cmakelang",
