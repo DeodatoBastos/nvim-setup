@@ -29,3 +29,5 @@ vim.opt.updatetime = 50
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.hidden = true
 vim.opt.clipboard:append("unnamedplus")
+
+vim.g.python3_host_prog = os.getenv("PYENV_ROOT") .. "/versions/nvim/bin/python"

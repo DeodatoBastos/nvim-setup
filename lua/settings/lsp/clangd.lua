@@ -13,6 +13,7 @@ local cmd_table = {
     "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
     "--offset-encoding=utf-16", --temporary fix for null-ls
     "--indent-width=4",
+    "--fallback-style=webkit"
     -- "--limit-references=1000",
     -- "--limit-resutls=1000",
     -- "--malloc-trim",
