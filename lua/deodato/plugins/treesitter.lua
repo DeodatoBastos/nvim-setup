@@ -28,9 +28,9 @@ return {
                 "git_rebase",
                 "sql",
                 -- "ninja",
-                "markdown",
                 -- "verilog",
                 "comment",
+                "markdown",
                 "markdown_inline",
             },
 

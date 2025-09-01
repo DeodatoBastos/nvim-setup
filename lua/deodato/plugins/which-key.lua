@@ -8,6 +8,21 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons", "echasnovski/mini.icons" },
     config = function()
         local wk = require("which-key")
+        local _border = "rounded"
+
+        local function bordered_hover(_opts)
+            _opts = _opts or {}
+            return vim.lsp.buf.hover(vim.tbl_deep_extend("force", _opts, {
+                border = _border,
+            }))
+        end
+
+        local function bordered_signature_help(_opts)
+            _opts = _opts or {}
+            return vim.lsp.buf.signature_help(vim.tbl_deep_extend("force", _opts, {
+                border = _border,
+            }))
+        end
 
         wk.setup({
             -- triggers = {
@@ -20,6 +35,13 @@ return {
         })
 
         local mappings = {
+            -- { "K", bordered_hover, desc = "Hover" },
+            { "K", "<cmd>lua require('pretty_hover').hover()<cr>", desc = "Hover" },
+            { "gd", vim.lsp.buf.definition, desc = "Go to Definition" },
+            { "gD", vim.lsp.buf.declaration, desc = "Go to Declaration" },
+            { "gi", vim.lsp.buf.implementation, desc = "Go to Implementation" },
+            { "gr", vim.lsp.buf.references, desc = "Find references" },
+            { "gl", vim.diagnostic.open_float, desc = "Open float" },
             { "<leader>P", "<cmd>Telescope projects<cr>", desc = "Projects" },
             {
                 "<leader>S",
@@ -64,9 +86,18 @@ return {
                 { "<leader>lf", "<cmd>FormatWriteLock<cr>", desc = "Format" },
                 { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
                 { "<leader>lI", "<cmd>Mason<cr>", desc = "Mason" },
-                { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
-                { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
+                {
+                    "<leader>lj",
+                    "<cmd>lua vim.diagnostic.jump({ buffer = 0, count =  1, float = true})<cr>",
+                    desc = "Next Diagnostic",
+                },
+                {
+                    "<leader>lk",
+                    "<cmd>lua vim.diagnostic.jump({ buffer = 0, count = -1, float = true})<cr>",
+                    desc = "Prev Diagnostic",
+                },
                 { "<leader>lL", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
+                { "<leader>lh", bordered_signature_help, desc = "Signature Help" },
                 { "<leader>lt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
                 { "<leader>lq", "<cmd>lua vim.diagnostic.setqflist()<cr>", desc = "Quickfix" },
                 { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
