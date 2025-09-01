@@ -13,7 +13,23 @@ return {
                 functionReturnTypes = true,
             },
             include = {
-                "src"
+                "src",
+            },
+            reportMissingImports = true,
+        },
+        python = {
+            analysis = {
+                typeCheckingMode = "basic",
+                autoImportCompletions = true,
+                diagnosticMode = "openFilesOnly", -- workspace
+            },
+            disableOrganizeImports = false,
+            inlayHints = {
+                variableTypes = true,
+                functionReturnTypes = true,
+            },
+            include = {
+                "src",
             },
             reportMissingImports = true,
         },

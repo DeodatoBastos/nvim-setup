@@ -100,6 +100,10 @@ return {
                     require("formatter.filetypes.go").gofumpt,
                 },
 
+                tex = {
+                    require("formatter.filetypes.tex").latexindent,
+                },
+
                 ["*"] = {
                     require("formatter.filetypes.any").remove_trailing_whitespace,
                 },

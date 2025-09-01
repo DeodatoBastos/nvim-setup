@@ -21,6 +21,9 @@ return {
         lint.linters_by_ft = {
             ["*"] = { "codespell" },
             python = { "flake8", "pylint" },
+            bash = { "shellcheck" },
+            zsh = { "shellcheck" },
+
             -- javascript = {"eslint"},
             -- javascriptreact = {"eslint"},
             -- typescript = {"eslint"},
