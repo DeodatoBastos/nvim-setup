@@ -11,10 +11,11 @@ return {
                 "--print-width 150",
             },
         }
+
         local clangformat_options = {
             exe = "clang-format",
             args = {
-                '--style="{BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 100}"'
+                '--style="{BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 100}"',
             },
         }
 
@@ -83,17 +84,34 @@ return {
                 cpp = {
                     defaults.clangformat,
 
-                    function ()
+                    function()
                         return clangformat_options
-                    end
+                    end,
                 },
 
                 c = {
                     defaults.clangformat,
 
-                    function ()
+                    function()
                         return clangformat_options
-                    end
+                    end,
+                },
+
+                python = {
+                    require("formatter.filetypes.python").ruff,
+
+                    function()
+                        return {
+                            exe = "ruff",
+                            args = {
+                                "format",
+                                "--line-length=120",
+                                "-q",
+                                "-",
+                            },
+                            stdin = true,
+                        }
+                    end,
                 },
 
                 go = {
@@ -101,7 +119,7 @@ return {
                 },
 
                 tex = {
-                    require("formatter.filetypes.tex").latexindent,
+                    defaults.latexindent,
                 },
 
                 ["*"] = {
