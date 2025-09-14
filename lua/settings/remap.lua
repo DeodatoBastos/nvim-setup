@@ -6,7 +6,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<C-s>", vim.cmd.w, { desc = "Save File" })
-vim.keymap.set("n", "<leader>s", vim.cmd.so)
 vim.keymap.set("n", "\\", vim.cmd.vsplit, { desc = "Vertical Split" })
 vim.keymap.set("n", "|", vim.cmd.split, { desc = "Horizontal Split" })
 
@@ -59,19 +58,18 @@ keymap("v", "<leader>d", [["_d]], opts("Delete to null register"))
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 ---
 
-
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts("Stay in indent mode"))
 keymap("v", ">", ">gv", opts("Stay in indent mode"))
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts("Move the current line up"))
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts("Move the current line down"))
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts("Move the current line up"))
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts("Move the current line up"))
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts("Move the current line down"))
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts("Move the current line up"))
 
 -- Terminal --

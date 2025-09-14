@@ -27,32 +27,6 @@ end
 
 ---@param bufnr integer
 function M.lsp_keymaps(bufnr)
-    ---@param desc string
-    local function opts(desc)
-        return { desc = desc, buffer = bufnr, noremap = true, silent = true }
-    end
-    local keymap = vim.keymap.set
-    keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to Declaration"))
-    keymap("n", "gd", vim.lsp.buf.definition, opts("Go to Denifinition"))
-    -- keymap("n", "K", vim.lsp.buf.hover, opts("Hover"))
-    keymap("n", "K", "lua require('pretty_hover').hover()", opts("Hover"))
-    keymap("n", "gi", vim.lsp.buf.implementation, opts("Go to Implementation"))
-    keymap("n", "gr", vim.lsp.buf.references, opts("Find references"))
-    keymap("n", "gl", vim.diagnostic.open_float, opts("Open Float"))
-    keymap("n", "<leader>li", vim.cmd.LspInfo, opts("Info"))
-    keymap("n", "<leader>lI", vim.cmd.Mason, opts("Mason"))
-    keymap("n", "<leader>la", vim.lsp.buf.code_action, opts("Code Action"))
-    keymap("n", "<leader>lt", vim.lsp.buf.type_definition, opts("Type Denifinition"))
-    keymap("n", "<leader>lj", function()
-        vim.diagnostic.jump({ buffer = 0, count = 1, float = true })
-    end, opts("Next diagnostic"))
-    keymap("n", "<leader>lk", function()
-        vim.diagnostic.jump({ buffer = 0, count = -1, float = true })
-    end, opts("Previous diagnostic"))
-    keymap("n", "<leader>lr", vim.lsp.buf.rename, opts("Rename"))
-    keymap("n", "<leader>lh", vim.lsp.buf.signature_help, opts("Signature Help"))
-    keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts("Quick fix"))
-    keymap("n", "<leader>lF", vim.lsp.buf.format, opts("Format (LSP)"))
 end
 
 ---@param a table

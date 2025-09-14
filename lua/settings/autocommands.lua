@@ -15,6 +15,19 @@
 --     end,
 -- })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    pcall(vim.keymap.del, "n", "gc")
+    pcall(vim.keymap.del, "x", "gc")
+    pcall(vim.keymap.del, "n", "gcc")
+    pcall(vim.keymap.del, "x", "gcc")
+    pcall(vim.keymap.del, "n", "gra")
+    pcall(vim.keymap.del, "n", "grn")
+    pcall(vim.keymap.del, "n", "gri")
+    pcall(vim.keymap.del, "n", "grr")
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     callback = function()
         local function is_loclist_open()

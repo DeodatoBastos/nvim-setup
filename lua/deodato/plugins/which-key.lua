@@ -24,19 +24,9 @@ return {
             }))
         end
 
-        wk.setup({
-            -- triggers = {
-            --     -- list of mode / prefixes that should never be hooked by WhichKey
-            --     -- this is mostly relevant for keymaps that start with a native binding
-            --     { i = { "j", "k" }, mode = "xo" } ,
-            --     { v = { "j", "k", "y", "d" }, mode = "xo" },
-            --     { n = { "y", "d", "v" }, mode = "xo" }
-            -- },
-        })
-
         local mappings = {
             -- { "K", bordered_hover, desc = "Hover" },
-            { "K", "<cmd>lua require('pretty_hover').hover()<cr>", desc = "Hover" },
+            { "K", require("pretty_hover").hover, desc = "Hover" },
             { "gd", vim.lsp.buf.definition, desc = "Go to Definition" },
             { "gD", vim.lsp.buf.declaration, desc = "Go to Declaration" },
             { "gi", vim.lsp.buf.implementation, desc = "Go to Implementation" },
@@ -48,59 +38,71 @@ return {
                 group = "Session",
                 {
                     "<leader>Sc",
-                    "<cmd>lua require('persistence').load()<cr>",
+                    require("persistence").load,
                     desc = "Restore last session for current dir",
                 },
                 {
                     "<leader>Sl",
-                    "<cmd>lua require('persistence').load({ last = true })<cr>",
+                    function()
+                        require("persistence").load({ last = true })
+                    end,
                     desc = "Restore last session",
                 },
-                { "<leader>SQ", "<cmd>lua require('persistence').stop()<cr>", desc = "Quit without saving session" },
+                { "<leader>SQ", require("persistence").stop, desc = "Quit without saving session" },
             },
             { "<leader>N", "<cmd>edit ~/.config/nvim/init.lua<cr>", desc = "Edit Nvim Settings" },
             {
                 "<leader>C",
                 group = "Connections",
-                { "<leader>Ca", "<cmd>DBUIAddConnection<cr>", desc = "Add Connection" },
-                { "<leader>Cf", "<cmd>DBUIFindBuffer<cr>", desc = "Find Buffer" },
-                { "<leader>Cr", "<cmd>DBUIRenameBuffer<cr>", desc = "Rename Buffer" },
-                { "<leader>Cl", "<cmd>DBUILastQueryInfo<cr>", desc = "Last Query Info" },
-                { "<leader>Ch", "<cmd>DBUIHideNotifications<cr>", desc = "Hide Notifications" },
+                { "<leader>Ca", vim.cmd.DBUIAddConnection, desc = "Add Connection" },
+                { "<leader>Cf", vim.cmd.DBUIFindBuffer, desc = "Find Buffer" },
+                { "<leader>Cr", vim.cmd.DBUIRenameBuffer, desc = "Rename Buffer" },
+                { "<leader>Cl", vim.cmd.DBUILastQueryInfo, desc = "Last Query Info" },
+                { "<leader>Ch", vim.cmd.DBUIHideNotifications, desc = "Hide Notifications" },
             },
             {
                 "<leader>T",
                 group = "Treesitter",
-                { "<leader>Ti", "<cmd>TSInstallInfo<cr>", desc = "Install info" },
-                { "<leader>Tu", "<cmd>TSUpdate<cr>", desc = "Update" },
-                { "<leader>Ts", "<cmd>TSUpdateSync<cr>", desc = "Update and sync" },
-                { "<leader>Te", "<cmd>TSEnable<cr>", desc = "Enable" },
-                { "<leader>Td", "<cmd>TSDisable<cr>", desc = "Disable" },
+                { "<leader>Ti", vim.cmd.TSInstallInfo, desc = "Install info" },
+                { "<leader>Tu", vim.cmd.TSUpdate, desc = "Update" },
+                { "<leader>Ts", vim.cmd.TSUpdateSync, desc = "Update and sync" },
+                { "<leader>Te", vim.cmd.TSEnable, desc = "Enable" },
+                { "<leader>Td", vim.cmd.TSDisable, desc = "Disable" },
             },
             {
                 "<leader>l",
                 group = "LSP",
-                { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-                { "<leader>ld", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "List Diagnostic" },
-                { "<leader>lF", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", desc = "Format (LSP)" },
-                { "<leader>lf", "<cmd>FormatWriteLock<cr>", desc = "Format" },
-                { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
-                { "<leader>lI", "<cmd>Mason<cr>", desc = "Mason" },
+                { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action" },
+                { "<leader>ld", vim.diagnostic.setloclis, desc = "List Diagnostic" },
+                {
+                    "<leader>lF",
+                    function()
+                        vim.lsp.buf.format({ async = true })
+                    end,
+                    desc = "Format (LSP)",
+                },
+                { "<leader>lf", vim.cmd.FormatWriteLock, desc = "Format" },
+                { "<leader>li", vim.cmd.LspInfo, desc = "Info" },
+                { "<leader>lI", vim.cmd.Mason, desc = "Mason" },
                 {
                     "<leader>lj",
-                    "<cmd>lua vim.diagnostic.jump({ buffer = 0, count =  1, float = true})<cr>",
+                    function()
+                        vim.diagnostic.jump({ buffer = 0, count = 1, float = true })
+                    end,
                     desc = "Next Diagnostic",
                 },
                 {
                     "<leader>lk",
-                    "<cmd>lua vim.diagnostic.jump({ buffer = 0, count = -1, float = true})<cr>",
+                    function()
+                        vim.diagnostic.jump({ buffer = 0, count = -1, float = true })
+                    end,
                     desc = "Prev Diagnostic",
                 },
-                { "<leader>lL", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
+                { "<leader>lL", vim.lsp.codelens.run, desc = "CodeLens Action" },
                 { "<leader>lh", bordered_signature_help, desc = "Signature Help" },
-                { "<leader>lt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
-                { "<leader>lq", "<cmd>lua vim.diagnostic.setqflist()<cr>", desc = "Quickfix" },
-                { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+                { "<leader>lt", vim.lsp.buf.type_definition, desc = "Type Definition" },
+                { "<leader>lq", vim.diagnostic.setqflist, desc = "Quickfix" },
+                { "<leader>lr", vim.lsp.buf.rename, desc = "Rename" },
                 { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
                 { "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
             },
@@ -129,7 +131,7 @@ return {
                 { "<leader>Lp", "<cmd>Lazy profile<cr>", desc = "Profile" },
                 { "<leader>Ld", "<cmd>Lazy debug<cr>", desc = "Debug" },
                 { "<leader>Lc", "<cmd>Lazy clean<cr>", desc = "Clean" },
-                { "<leader>LS", "<cmd>Lazy<cr>", desc = "Lazy" },
+                { "<leader>LS", vim.cmd.Lazy, desc = "Lazy" },
             },
             {
                 "<leader>b",
@@ -147,30 +149,33 @@ return {
             {
                 "<leader>g",
                 group = "Git",
-                { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },
-                { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk" },
-                { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame" },
-                { "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk" },
-                { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
-                { "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
-                { "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
-                { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
+                { "<leader>gj", require("gitsigns").next_hunk, desc = "Next Hunk" },
+                { "<leader>gk", require("gitsigns").prev_hunk, desc = "Prev Hunk" },
+                { "<leader>gl", require("gitsigns").blame_line, desc = "Blame" },
+                { "<leader>gp", require("gitsigns").preview_hunk, desc = "Preview Hunk" },
+                { "<leader>gr", require("gitsigns").reset_hunk, desc = "Reset Hunk" },
+                { "<leader>gR", require("gitsigns").reset_buffer, desc = "Reset Buffer" },
+                { "<leader>gs", require("gitsigns").stage_hunk, desc = "Stage Hunk" },
+                { "<leader>gu", require("gitsigns").undo_stage_hunk, desc = "Undo Stage Hunk" },
                 { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
                 { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
                 { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
-                { "<leader>gd", "<cmd>Gvdiffsplit<cr>", desc = "Diff" },
+                { "<leader>gd", vim.cmd.Gvdiffsplit, desc = "Diff" },
             },
-            { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer" },
+            { "<leader>e", vim.cmd.NvimTreeToggle, desc = "Explorer" },
             { "<leader>f", "<cmd>Telescope git_files<cr>", desc = "Find git files" },
-            { "<leader>c", "<cmd>lua require('close_buffers').delete({type = 'this'})<cr>", desc = "Close Buffer" },
-            { "<leader>s", "<cmd>source %<cr>", desc = "Source file" },
+            {
+                "<leader>c",
+                function()
+                    require("close_buffers").delete({ type = "this" })
+                end,
+                desc = "Close Buffer",
+            },
+            { "<leader>s", vim.cmd.so, desc = "Source file" },
             { "<leader>d", "<Plug>(doge-generate)", desc = "Generate docstring" },
-            { "<leader>h", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
-            { "<leader>/", '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', desc = "Comment" },
-            { "<C-;>", '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', desc = "Comment" },
+            { "<leader>h", vim.cmd.nohlsearch, desc = "No Highlight" },
         }
 
         wk.add(mappings)
     end,
-    -- opts = {},
 }

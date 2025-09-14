@@ -97,22 +97,22 @@ return {
                     end,
                 },
 
-                python = {
-                    require("formatter.filetypes.python").ruff,
+                -- python = {
+                --     require("formatter.filetypes.python").ruff,
 
-                    function()
-                        return {
-                            exe = "ruff",
-                            args = {
-                                "format",
-                                "--line-length=120",
-                                "-q",
-                                "-",
-                            },
-                            stdin = true,
-                        }
-                    end,
-                },
+                --     function()
+                --         return {
+                --             exe = "ruff",
+                --             args = {
+                --                 "format",
+                --                 "--line-length=120",
+                --                 "-q",
+                --                 "-",
+                --             },
+                --             stdin = true,
+                --         }
+                --     end,
+                -- },
 
                 go = {
                     require("formatter.filetypes.go").gofumpt,
