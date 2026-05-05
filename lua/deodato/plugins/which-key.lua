@@ -25,7 +25,7 @@ return {
         end
 
         local mappings = {
-            -- { "K", bordered_hover, desc = "Hover" },
+            { "Q", bordered_hover, desc = "Hover" },
             { "K", require("pretty_hover").hover, desc = "Hover" },
             { "gd", vim.lsp.buf.definition, desc = "Go to Definition" },
             { "gD", vim.lsp.buf.declaration, desc = "Go to Declaration" },

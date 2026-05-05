@@ -12,6 +12,7 @@ return {
                     ["cmp.entry.get_documentation"] = true,
                 },
                 hover = {
+                    view = "hover",
                     opts = {
                         border = "rounded"
                     }
