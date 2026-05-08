@@ -15,8 +15,8 @@ return {
     -- "texlab",
     "jsonls",
     -- "tsserver",
-    "tailwindcss",
-    "eslint",
+    -- "tailwindcss",
+    -- "eslint",
     -- "gopls",
     -- "golangci_lint_ls",
 }

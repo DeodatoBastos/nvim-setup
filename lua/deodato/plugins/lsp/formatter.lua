@@ -45,37 +45,37 @@ return {
                     end,
                 },
 
-                javascript = {
-                    prettier,
+                -- javascript = {
+                --     prettier,
 
-                    function()
-                        return prettier_options
-                    end,
-                },
+                --     function()
+                --         return prettier_options
+                --     end,
+                -- },
 
-                javascriptreact = {
-                    prettier,
+                -- javascriptreact = {
+                --     prettier,
 
-                    function()
-                        return prettier_options
-                    end,
-                },
+                --     function()
+                --         return prettier_options
+                --     end,
+                -- },
 
-                typescript = {
-                    prettier,
+                -- typescript = {
+                --     prettier,
 
-                    function()
-                        return prettier_options
-                    end,
-                },
+                --     function()
+                --         return prettier_options
+                --     end,
+                -- },
 
-                typescriptreact = {
-                    prettier,
+                -- typescriptreact = {
+                --     prettier,
 
-                    function()
-                        return prettier_options
-                    end,
-                },
+                --     function()
+                --         return prettier_options
+                --     end,
+                -- },
 
                 cmake = {
                     require("formatter.filetypes.cmake").cmakeformat,
@@ -97,26 +97,9 @@ return {
                     end,
                 },
 
-                -- python = {
-                --     require("formatter.filetypes.python").ruff,
-
-                --     function()
-                --         return {
-                --             exe = "ruff",
-                --             args = {
-                --                 "format",
-                --                 "--line-length=120",
-                --                 "-q",
-                --                 "-",
-                --             },
-                --             stdin = true,
-                --         }
-                --     end,
+                -- go = {
+                --     require("formatter.filetypes.go").gofumpt,
                 -- },
-
-                go = {
-                    require("formatter.filetypes.go").gofumpt,
-                },
 
                 tex = {
                     defaults.latexindent,
