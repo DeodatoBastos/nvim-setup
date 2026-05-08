@@ -8,7 +8,7 @@ return {
         "windwp/nvim-ts-autotag",
     },
     config = function()
-        require("nvim-treesitter.configs").setup({
+        require("nvim-treesitter").setup({
             ensure_installed = {
                 "go",
                 "bash",
@@ -32,6 +32,9 @@ return {
                 "comment",
                 "markdown",
                 "markdown_inline",
+                "lua",
+                "vim",
+                "regex",
             },
 
             ignore_install = { "haskell" },
