@@ -4,7 +4,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        "mrjones2014/nvim-ts-rainbow",
+        -- "mrjones2014/nvim-ts-rainbow",
         "windwp/nvim-ts-autotag",
     },
     config = function()
@@ -21,7 +21,7 @@ return {
                 "python",
                 -- "tsx",
                 -- "r",
-                -- "latex",
+                "latex",
                 "cmake",
                 "make",
                 -- "bibtex",
@@ -35,6 +35,8 @@ return {
                 "lua",
                 "vim",
                 "regex",
+                "yaml",
+                "html",
             },
 
             ignore_install = { "haskell" },

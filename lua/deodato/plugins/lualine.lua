@@ -20,6 +20,7 @@ return {
                 lualine_a = { components.mode },
                 lualine_b = { components.filename },
                 lualine_c = { components.branch, components.py_env },
+                -- lualine_c = { components.branch, "venv-selector" },
                 lualine_x = { components.diagnostics, components.lsp, components.spaces, components.filetype },
                 lualine_y = { "location" },
                 lualine_z = {}, -- progress

@@ -72,11 +72,17 @@ return {
             },
         })
 
+        -- local signs = {
+        --     { name = "DiagnosticSignError", text = icons.BoldError },
+        --     { name = "DiagnosticSignWarn", text = icons.BoldWarning },
+        --     { name = "DiagnosticSignHint", text = icons.BoldInformation },
+        --     { name = "DiagnosticSignInfo", text = icons.BoldQuestion },
+        -- }
         local signs = {
-            { name = "DiagnosticSignError", text = icons.BoldError },
-            { name = "DiagnosticSignWarn", text = icons.BoldWarning },
-            { name = "DiagnosticSignHint", text = icons.BoldInformation },
-            { name = "DiagnosticSignInfo", text = icons.BoldQuestion },
+            [vim.diagnostic.severity.ERROR] = icons.BoldError,
+            [vim.diagnostic.severity.WARN] = icons.BoldWarning,
+            [vim.diagnostic.severity.HINT] = icons.BoldInformation,
+            [vim.diagnostic.severity.INFO] = icons.BoldQuestion,
         }
 
         vim.diagnostic.config({

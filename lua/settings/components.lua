@@ -89,7 +89,17 @@ M.py_env = {
     function()
         if vim.bo.filetype == "python" then
             local venv = os.getenv("VIRTUAL_ENV")
-            if venv then
+
+            if not venv then
+                local pv_file = io.open(".python-version", "r")
+                if pv_file then
+                    -- Read the first line and strip any trailing newlines/spaces
+                    venv = pv_file:read("*l"):gsub("%s+", "")
+                    pv_file:close()
+                end
+            end
+
+            if venv and venv ~= "" then
                 local icon = require("nvim-web-devicons")
                 local py_icon, _ = icon.get_icon(".py")
                 return string.format(" " .. py_icon .. " (%s)", M.env_cleanup(venv))
