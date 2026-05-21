@@ -144,6 +144,7 @@ return {
                 { "<leader>bD", "<cmd>BufferLineCloseOthers<cr>", desc = "Close all others buffers" },
                 { "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Close all left" },
                 { "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Close all right" },
+                { "<leader>bt", "<cmd>e#<cr>", desc = "Open Last buffer" },
             },
 
             {
