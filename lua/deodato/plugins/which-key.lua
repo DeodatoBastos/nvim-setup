@@ -82,6 +82,7 @@ return {
                     desc = "Format (LSP)",
                 },
                 { "<leader>lf", vim.cmd.FormatWriteLock, desc = "Format" },
+                { "<leader>lg", vim.cmd.LanguageToolCheck, desc = "Grammar Check" },
                 { "<leader>li", vim.cmd.LspInfo, desc = "Info" },
                 { "<leader>lI", vim.cmd.Mason, desc = "Mason" },
                 {

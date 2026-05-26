@@ -16,16 +16,16 @@
 -- })
 
 vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    pcall(vim.keymap.del, "n", "gc")
-    pcall(vim.keymap.del, "x", "gc")
-    pcall(vim.keymap.del, "n", "gcc")
-    pcall(vim.keymap.del, "x", "gcc")
-    pcall(vim.keymap.del, "n", "gra")
-    pcall(vim.keymap.del, "n", "grn")
-    pcall(vim.keymap.del, "n", "gri")
-    pcall(vim.keymap.del, "n", "grr")
-  end,
+    callback = function()
+        pcall(vim.keymap.del, "n", "gc")
+        pcall(vim.keymap.del, "x", "gc")
+        pcall(vim.keymap.del, "n", "gcc")
+        pcall(vim.keymap.del, "x", "gcc")
+        pcall(vim.keymap.del, "n", "gra")
+        pcall(vim.keymap.del, "n", "grn")
+        pcall(vim.keymap.del, "n", "gri")
+        pcall(vim.keymap.del, "n", "grr")
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -102,3 +102,15 @@ vim.api.nvim_create_autocmd("FileType", {
     },
     command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
 })
+
+vim.api.nvim_create_user_command("LTSetLang", function(opts)
+    -- 1. Close current LanguageTool windows/buffers to prevent crashes
+    vim.cmd("LanguageToolClear")
+
+    -- 2. Update the language configuration
+    vim.g.languagetool = { ["."] = { language = opts.args } }
+
+    -- 3. Force the plugin to re-initialize
+    vim.cmd("LanguageToolSetUp")
+    print("LanguageTool switched to: " .. opts.args)
+end, { nargs = 1 })
