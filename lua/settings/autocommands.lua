@@ -103,17 +103,9 @@ vim.api.nvim_create_autocmd("FileType", {
     command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
 })
 
-vim.api.nvim_create_user_command("LTSetLang", function(opts)
-    -- 1. Close current LanguageTool windows/buffers to prevent crashes
-    vim.cmd("LanguageToolClear")
-
-    -- 2. Update the language configuration
-    vim.g.languagetool = { ["."] = { language = opts.args } }
+vim.api.nvim_create_user_command("SetLang", function(opts)
     vim.opt.spelllang = { opts.args }
-
-    -- 3. Force the plugin to re-initialize
-    vim.cmd("LanguageToolSetUp")
-    print("LanguageTool switched to: " .. opts.args)
+    print("Language switched to: " .. opts.args)
 end, { nargs = 1 })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
