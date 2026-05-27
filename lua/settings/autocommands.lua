@@ -109,6 +109,7 @@ vim.api.nvim_create_user_command("LTSetLang", function(opts)
 
     -- 2. Update the language configuration
     vim.g.languagetool = { ["."] = { language = opts.args } }
+    vim.opt.spelllang = { opts.args }
 
     -- 3. Force the plugin to re-initialize
     vim.cmd("LanguageToolSetUp")

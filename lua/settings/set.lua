@@ -59,8 +59,9 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = "nvc"
 
 if vim.g.languagetool == nil then
-  vim.g.languagetool = { ["."] = { language = "en-US" } }
+    vim.g.languagetool = { ["."] = { language = "en-US" } }
 end
 
-vim.opt.spelllang = { "en_us", "fr" }
+-- vim.opt.spelllang = { "en_us", "fr" }
+vim.opt.spelllang = { "en_us" }
 vim.opt.spell = true
