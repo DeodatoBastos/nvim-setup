@@ -114,3 +114,14 @@ vim.api.nvim_create_user_command("LTSetLang", function(opts)
     vim.cmd("LanguageToolSetUp")
     print("LanguageTool switched to: " .. opts.args)
 end, { nargs = 1 })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("OSC52Yank", { clear = true }),
+    callback = function()
+        -- Only trigger on explicit 'y' (yank). Ignore deletes ('d', 'x') and changes ('c').
+        if vim.v.event.operator == "y" then
+            -- Safely send the text to Kitty using Neovim's native headless-safe OSC 52 API
+            require("vim.ui.clipboard.osc52").copy("+")(vim.v.event.regcontents)
+        end
+    end,
+})

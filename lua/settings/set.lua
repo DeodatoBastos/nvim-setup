@@ -28,18 +28,30 @@ vim.opt.cursorline = true
 vim.opt.updatetime = 50
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.hidden = true
-vim.opt.clipboard:append("unnamedplus")
-vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-        ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-        ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-    paste = {
-        ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-        ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-    },
-}
+-- vim.opt.clipboard:append("unnamedplus")
+-- vim.g.clipboard = {
+--     name = "OSC 52",
+--     copy = {
+--         ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+--         ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+--     },
+--     paste = {
+--         ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+--         ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+--     },
+-- }
+-- vim.g.clipboard = {
+--   name = 'kitty',
+--   copy = {
+--     ['+'] = 'kitty +kitten clipboard',
+--     ['*'] = 'kitty +kitten clipboard',
+--   },
+--   paste = {
+--     ['+'] = 'kitty +kitten clipboard --get-clipboard',
+--     ['*'] = 'kitty +kitten clipboard --get-clipboard',
+--   },
+--   cache_enabled = 1,
+-- }
 
 vim.g.python3_host_prog = os.getenv("PYENV_ROOT") .. "/versions/nvim/bin/python"
 
