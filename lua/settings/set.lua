@@ -61,3 +61,5 @@ vim.opt.concealcursor = "nvc"
 -- vim.opt.spelllang = { "en_us", "fr" }
 -- vim.opt.spelllang = { "en_us" }
 -- vim.opt.spell = true
+
+vim.opt.shell = "/bin/zsh"
