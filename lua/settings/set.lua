@@ -63,3 +63,7 @@ vim.opt.concealcursor = "nvc"
 -- vim.opt.spell = true
 
 vim.opt.shell = "/bin/zsh"
+
+vim.ui.open = function(url)
+    vim.notify("Server environment: Cannot open " .. url, vim.log.levels.INFO)
+end
