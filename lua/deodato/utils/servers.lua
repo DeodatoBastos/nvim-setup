@@ -12,7 +12,7 @@ return {
     "vimls",
     "marksman",
     "sqlls",
-    -- "texlab",
+    "texlab",
     "jsonls",
     -- "tsserver",
     -- "tailwindcss",

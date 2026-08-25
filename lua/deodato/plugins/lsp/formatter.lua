@@ -102,7 +102,17 @@ return {
                 -- },
 
                 tex = {
-                    defaults.latexindent,
+                    function()
+                        return {
+                            exe = "latexindent",
+                            args = {
+                                "-g",
+                                "/dev/null",
+                                "-y=defaultIndent: '  '",
+                            },
+                            stdin = true,
+                        }
+                    end,
                 },
 
                 ["*"] = {

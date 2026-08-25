@@ -24,7 +24,7 @@ return {
                 "latex",
                 "cmake",
                 "make",
-                -- "bibtex",
+                "bibtex",
                 "git_rebase",
                 "sql",
                 -- "ninja",

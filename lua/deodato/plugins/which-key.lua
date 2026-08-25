@@ -174,7 +174,7 @@ return {
                 desc = "Close Buffer",
             },
             { "<leader>s", vim.cmd.so, desc = "Source file" },
-            { "<leader>d", "<Plug>(doge-generate)", desc = "Generate docstring" },
+            { "<leader>D", "<Plug>(doge-generate)", desc = "Generate docstring" },
             { "<leader>h", vim.cmd.nohlsearch, desc = "No Highlight" },
         }
 
